@@ -14,4 +14,4 @@ Quisque ac lobortis felis. Suspendisse tristique luctus commodo. Cras nec tellus
 
 Telepítés:
 TODO:kiötletni
-Nullam malesuada neque vel massa gravida, et viverra nulla accumsan. Curabitur eu eleifend erat, convallis ullamcorper mi. Phasellus ullamcorper mi leo, vel finibus orci consectetur nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque vestibulum mauris ligula. Nunc convallis massa ut nisl ultricies, sit amet faucibus magna blandit.
+Ez egy sima windows-os applikáció.....bla bla bla...
