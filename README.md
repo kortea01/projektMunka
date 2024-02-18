@@ -1,10 +1,7 @@
-**Ételrendelő applikáció**
+**Ételrendelő applikáció közös leírás**
 
 **Leírás:**  
-Ételrendelő alkalmazás, mely áll egy mobilalkalmazásból, egy webes felületből és egy windows alkalmazásból.
-A windows alkalmazásba az étterem jogosultsággal rendelkező felhasználói léphetnek be.
-Az alkalmazás a mobil-, webes felületen történő rendeléseket jeleníti meg az étterem számára. Az éttermi dolgozói jogosultság alapján szerkesztheti vagy csak olvashatja a felületet. A szerkesztési joggal lehet új ételt felvinni, napi ajánlatot összeállítani. 
-
+Ételrendelő alkalmazás, mely áll egy mobilalkalmazásból, egy webes felületből és egy windows alkalmazásból  
 
 **Rendszerkövetelmény:**  
 Minimum rendszerkövetelény:  
@@ -14,12 +11,13 @@ Windows 10 32/64 bit oprerációs rendszer vagy újabb
 10 MB tárhely  
 
 **Telepítés:**  
-A program nem igényel telepítést.  
+1. todo:android app telepítés leírása  
+2. ms form applikáció
+3. webes alkalmazás url címe jön ide majd...  
 
 **Alkalmazás futtatása:**
-Indítsuk el az etterem.exe alkalmazást windows alól.   
-Hiba esetén írjon emailt a fejlesztőcsapatnak: fejleszto@csapat.com címre.  
+TODO: megírni...    
 
 **Tesztesetek:**  
-A tesztek elérhetőek a XXXX fájlban (ez később kerül megadásra)
+A tesztek elérhetőek a XXXX fájlban (ez később kerül megadásra)  
 
