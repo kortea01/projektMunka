@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 # });
 # 
 
-Route::post('login', 'App\Http\Controllers\AuthController@login');
-Route::post('register', 'App\Http\Controllers\AuthController@register');
-Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+Route::post('login', 'App\Http\Controllers\Api\AuthController@login');
+Route::post('register', 'App\Http\Controllers\Api\AuthController@register');
+Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
 
 
