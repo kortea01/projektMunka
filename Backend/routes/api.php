@@ -19,8 +19,17 @@ use Illuminate\Support\Facades\Route;
 # });
 # 
 
+# public endpoints
 Route::post('login', 'App\Http\Controllers\Api\AuthController@login');
 Route::post('register', 'App\Http\Controllers\Api\AuthController@register');
 Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
 
+Route::get('menu', 'App\Http\Controllers\Api\DishController@index');
+Route::get('menu/{id}', 'App\Http\Controllers\Api\DishController@show');
+Route::get('menu/category/{category}', 'App\Http\Controllers\Api\DishController@categoryIndex');
+
+Route::get('igredients', 'App\Http\Controllers\Api\IngredientController@index');
+Route::get('igredient/{id}', 'App\Http\Controllers\Api\IngredientController@show');
+
+# protected endpoints
 
