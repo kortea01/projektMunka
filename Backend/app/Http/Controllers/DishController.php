@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
@@ -15,7 +16,8 @@ class DishController extends Controller
     public function index()
     {
         //
-        return Dish::all()->orderBy('category')->orgerBy('name')->paginate(50);
+        return Dish::orderBy('category')->orderBy('name')->paginate(50);
+        
     }
 
     public function categoryIndex($category)

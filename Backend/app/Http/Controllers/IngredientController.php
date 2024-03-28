@@ -14,7 +14,7 @@ class IngredientController extends Controller
     public function index()
     {
         //
-        return Ingredient::all()->orderBy('name')->paginate(50);
+        return Ingredient::orderBy('name')->paginate(50);
     }
 
     /**

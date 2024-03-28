@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+#use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,16 +21,16 @@ use Illuminate\Support\Facades\Route;
 # 
 
 # public endpoints
-Route::post('login', 'App\Http\Controllers\Api\AuthController@login');
-Route::post('register', 'App\Http\Controllers\Api\AuthController@register');
-Route::post('logout', 'App\Http\Controllers\Api\AuthController@logout');
+Route::post('login', 'App\Http\Controllers\AuthController@login');
+Route::post('register', 'App\Http\Controllers\AuthController@register');
+Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 
-Route::get('menu', 'App\Http\Controllers\Api\DishController@index');
-Route::get('menu/{id}', 'App\Http\Controllers\Api\DishController@show');
-Route::get('menu/category/{category}', 'App\Http\Controllers\Api\DishController@categoryIndex');
+Route::get('menu', 'App\Http\Controllers\DishController@index');
+Route::get('menu/{id}', 'App\Http\Controllers\DishController@show');
+Route::get('menu/category/{category}', 'App\Http\Controllers\DishController@categoryIndex');
 
-Route::get('igredients', 'App\Http\Controllers\Api\IngredientController@index');
-Route::get('igredient/{id}', 'App\Http\Controllers\Api\IngredientController@show');
+Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');
+Route::get('ingredient/{id}', 'App\Http\Controllers\IngredientController@show');
 
 # protected endpoints
 
