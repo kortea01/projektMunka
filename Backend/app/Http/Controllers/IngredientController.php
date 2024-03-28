@@ -36,10 +36,10 @@ class IngredientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ingredient $ingredient)
+    public function show($id)
     {
         //
-        $item = Ingredient::find($ingredient);
+        $item = Ingredient::findOrFail($id);
         return $item;
     }
 

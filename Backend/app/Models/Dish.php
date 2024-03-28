@@ -12,6 +12,10 @@ class Dish extends Model
         'ingredients' => 'array',
     ];
 
+    protected $nullable = [
+        'description',
+        'img_url'
+    ];
     protected $fillable = [
         'category',
         'name',

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('allergen')->nullable();
-            $table->integer('in_stock');
+            $table->integer('in_stock')->default(1);
             $table->timestamps();
         });
     }

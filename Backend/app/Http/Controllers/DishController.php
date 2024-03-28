@@ -44,12 +44,12 @@ class DishController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dish $dish)
+    public function show($id)
     {
         //
-        $item = Dish::find($dish);
-        if (is_array($dish->ingredients)) {
-            $dish->ingredients = Ingredient::whereIn('id', $dish->ingredients)->get();
+        $item = Dish::findOrFail($id);
+        if (is_array($item->ingredients)) {
+            $item->ingredients = Ingredient::whereIn('id', $item->ingredients)->get();
         }
         return $item;
     }

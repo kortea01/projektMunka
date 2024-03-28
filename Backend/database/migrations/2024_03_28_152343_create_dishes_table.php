@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('category', ['soup', 'salad', 'pizza', 'pasta', 'dessert', 'drinks' ,'other', 'risotto']);
             $table->string('name');
             $table->text('description');
-            $table->string('img_url');
+            $table->string('img_url')->nullable();
             $table->json('ingredients');
             $table->decimal('price', 8, 2);
             $table->timestamps();

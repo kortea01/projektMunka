@@ -30,7 +30,7 @@ Route::get('menu/{id}', 'App\Http\Controllers\DishController@show');
 Route::get('menu/category/{category}', 'App\Http\Controllers\DishController@categoryIndex');
 
 Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');
-Route::get('ingredient/{id}', 'App\Http\Controllers\IngredientController@show');
+Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show');
 
 # protected endpoints
 

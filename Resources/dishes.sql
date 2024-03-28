@@ -1,0 +1,20 @@
+INSERT INTO dishes (id, category, name, description, img_url, ingredients, price, created_at, updated_at)
+VALUES
+    (NULL, 'soup', 'Minestrone', 'Classic Italian vegetable soup', NULL, '["10", "23", "45"]', 5.99, NULL, NULL),
+    (NULL, 'soup', 'Zuppa Toscana', 'Tuscan sausage and kale soup', NULL, '["15", "32", "78"]', 6.99, NULL, NULL),
+    (NULL, 'soup', 'Pasta e Fagioli', 'Pasta and bean soup', NULL, '["21", "39", "47"]', 5.49, NULL, NULL),
+    (NULL, 'salad', 'Caprese', 'Fresh tomatoes and mozzarella', NULL, '["8", "12", "35"]', 7.99, NULL, NULL),
+    (NULL, 'salad', 'Caesar', 'Romaine lettuce and croutons', NULL, '["14", "27", "49"]', 8.49, NULL, NULL),
+    (NULL, 'salad', 'Arugula', 'Arugula, cherry tomatoes', NULL, '["18", "36", "44"]', 6.99, NULL, NULL),
+    (NULL, 'pizza', 'Margherita', 'Pizza dough, tomato sauce, mozzarella, basil', NULL, '["17", "7", "8", "13"]', 10.99, NULL, NULL),
+    (NULL, 'pizza', 'Pepperoni', 'Tomato sauce, mozzarella, pepperoni', NULL, '["17", "7", "8", "9", "31"]', 11.99, NULL, NULL),
+    (NULL, 'pizza', 'Quattro Stagioni', 'Pizza dough, tomato sauce, mozzarella, artichokes, ham, mushrooms', NULL, '["17", "7", "8", "11", "19", "28"]', 12.49, NULL, NULL),
+    (NULL, 'pasta', 'Spaghetti Bolognese', 'Traditional meat sauce', NULL, '["20", "29", "37"]', 9.99, NULL, NULL),
+    (NULL, 'pasta', 'Fettuccine Alfredo', 'Creamy parmesan sauce', NULL, '["16", "24", "42"]', 11.49, NULL, NULL),
+    (NULL, 'pasta', 'Lasagna', 'Layers of pasta, meat sauce', NULL, '["22", "30", "48"]', 12.99, NULL, NULL),
+    (NULL, 'dessert', 'Tiramisu', 'Coffee-flavored Italian dessert', NULL, '["25", "38", "50"]', 6.99, NULL, NULL),
+    (NULL, 'dessert', 'Cannoli', 'Fried pastry dough, sweet cream', NULL, '["33", "40", "46"]', 5.49, NULL, NULL),
+    (NULL, 'dessert', 'Panna Cotta', 'Sweetened cream, vanilla', NULL, '["34", "41", "43"]', 4.99, NULL, NULL),
+    (NULL, 'drinks', 'Espresso', 'Strong black coffee', NULL, '["1", "3", "5"]', 2.49, NULL, NULL),
+    (NULL, 'drinks', 'Limoncello', 'Lemon-flavored liqueur', NULL, '["2", "4", "6"]', 7.99, NULL, NULL),
+    (NULL, 'drinks', 'Prosecco', 'Italian sparkling wine', NULL, '["45", "47", "50"]', 9.99, NULL, NULL);
