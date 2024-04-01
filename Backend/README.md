@@ -1,5 +1,14 @@
-`composer init`
-create `.env` with database credentials
+clone the repository
+`git clone ...`
+
+go to Backend folder
+`cd Backend`
+
+init the composer project
+`composer install`
+
+localize: 
+create a `.env` file with database credentials :
 
 ```
 ...
