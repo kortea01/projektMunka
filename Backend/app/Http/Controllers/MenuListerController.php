@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class MenuListerController extends Controller
 {
+    //TODO: why is the timeout???!![]Đ]Đ[]Đ#&@#&@&
     public function getData()
     {
         $url = 'http://localhost:8000/api/menu';         
@@ -26,7 +27,6 @@ class MenuListerController extends Controller
 
         // Parse the JSON response
         $data = json_decode($result, true);
-
 
         return response()->json($data);
     }
