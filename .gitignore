@@ -19,3 +19,5 @@
 /.vs/projektMunka/v17/.wsuo
 /.vs/VSWorkspaceState.json
 /Backend/.phpunit.result.cache
+/Backend/database/migrations
+/Backend/.rnd
