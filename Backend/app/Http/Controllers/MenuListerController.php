@@ -38,7 +38,7 @@ class MenuListerController extends Controller
         $data = [
             'name' => 'Pizza',
             'description' => 'Pizza ala mezon',
-            'price' => '12',            
+            'price' => '12'            
         ];
 
         $menuItems = json_encode($data);
