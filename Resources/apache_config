@@ -20,3 +20,16 @@
 ```
 
 3., setup listen port to 8000
+
+
+......................
+A xamp virtual hostot egy különk fileban kell beállítan, de ahogy berakom a DocumentRootot, hibára fut. 403 az acces logban
+c:\xampp\apache\conf\extra\httpd-vhosts.conf 
+
+error.log:
+[Tue Apr 02 23:37:35.155164 2024] [authz_core:error] [pid 17860:tid 1920] [client ::1:56939] AH01630: client denied by server configuration: C:/Users/korte/source/repos/projektMunka/Backend/public/favicon.ico, referer: http://localhost:8000/menu2
+
+access.log:
+[02/Apr/2024:23:37:35 +0200] "GET /favicon.ico HTTP/1.1" 403 300 "http://localhost:8000/menu2" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+
+felgyújtom :)
