@@ -23,8 +23,18 @@
 
 
 ......................
-A xamp virtual hostot egy különk fileban kell beállítan, de ahogy berakom a DocumentRootot, hibára fut. 403 az acces logban
-c:\xampp\apache\conf\extra\httpd-vhosts.conf 
+A xampp virtual hostot egy külön fileban kell beállítani, de ahogy berakom a DocumentRootot, hibára fut a request. 403 az access logban
+c:\xampp\apache\conf\extra\httpd-vhosts.conf :
+...
+<VirtualHost *:8000>
+    ServerAdmin postmaster@localhost
+    DocumentRoot "c:/Users/korte/source/repos/projektMunka/Backend/public"
+    ServerName localhost
+    ##ErrorLog "/logs/error.log"
+    ##CustomLog "/logs/access.log" common
+</VirtualHost>
+...
+ha pl az ErrorLog és CustomLog részt kikommentezem, el sem indul xampp alatt az apache
 
 error.log:
 [Tue Apr 02 23:37:35.155164 2024] [authz_core:error] [pid 17860:tid 1920] [client ::1:56939] AH01630: client denied by server configuration: C:/Users/korte/source/repos/projektMunka/Backend/public/favicon.ico, referer: http://localhost:8000/menu2
