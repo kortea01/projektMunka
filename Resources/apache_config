@@ -1,0 +1,22 @@
+1., enable mod_rewrite
+
+
+2., setup virutal hosts
+
+```
+<VirtualHost *:8000>
+    ServerAdmin admin@example.com
+    ServerName localhost
+    DocumentRoot /var/www/html/Backend/public/  <<<  YOUR WORKING FOLER
+
+    <Directory /var/www/html/Backend/public/>   <<<  YOUR WORKING FOLER
+            AllowOverride All
+            Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+3., setup listen port to 8000
