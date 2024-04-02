@@ -9,9 +9,9 @@
     <h1>Menu</h1>
     
     <ul>
-        @foreach ($menuItems as $menuItem)
-            <li>{{ $menuItem['name'] }} </li>
-        @endforeach
+        <!--@foreach ($menuItems as $menuItem)-->
+            <li>{{ $menuItems['name'] }} - {{ $menuItems['description'] }} - {{ $menuItems['price'] }} </li>            
+        <!--@endforeach-->
     </ul>
     
 </body>

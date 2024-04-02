@@ -27,17 +27,18 @@ Route::get('/proba', function () {
 Route::get('/menu1', [MenuListerController::class, 'getData']);
 
 Route::get('/menu2', function () {
-    
+
     /*
-    $url = 'http://localhost:8000/api/menu'; 
+    $url = 'http://localhost:8000/api/menu';
     $response = file_get_contents($url);
     $apiData = json_decode($response);
     */
 
-    /*
+
     //$response = Http::get('http://localhost:8000/api/menu');
-    $response = Http::connectTimeout(3)->acceptJson()->get('http://localhost:8000/api/menu');
-    
+    //$response = Http::connectTimeout(3)->acceptJson()->get('api/menu');
+    $response = Http::get('/api/menu');
+
     // Check if the request was successful
     if ($response->successful()) {
         $menuItems = $response->json();
@@ -45,7 +46,11 @@ Route::get('/menu2', function () {
         // If the request failed, handle the error accordingly
         abort(500, 'Failed to fetch menu items');
     }
-    */
+
+    // Render the view and pass the menu items to it
+    return view('menu', ['menuItems' => $menuItems]);
+
+
 
     // Your logic to generate JSON data
     /*
@@ -53,22 +58,23 @@ Route::get('/menu2', function () {
             'name' => 'Pizza',
             'description' => 'Pizza ala mezon',
             'price' => '12'
-        ];        
+        ];
         */
 
-
-    $url = "http://localhost:8000/api/menu";    
+/*
+    $url = "http://localhost:8000/api/menu";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");    
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Content-Type:application/json'));
     $curl_response = curl_exec($ch);
     $result = json_decode($curl_response, true);
 
-    // Render the view and pass the menu items to it
-    return view('menu', ['menuItems' => $result]);
-   // return view('menu');
+    return view('menu');
+*/
+
+
 });
