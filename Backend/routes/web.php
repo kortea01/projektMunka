@@ -27,31 +27,26 @@ Route::get('/proba', function () {
 Route::get('/menu1', [MenuListerController::class, 'getData']);
 
 Route::get('/menu2', function () {
-
-    /*
-    $url = 'http://localhost:8000/api/menu';
-    $response = file_get_contents($url);
-    $apiData = json_decode($response);
-    */
-
-
-    $response = Http::get('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json');
+    
+    //$response = Http::get('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json');
     //$response = Http::connectTimeout(3)->acceptJson()->get('https://microsoftedge.github.io/Demos/json-dummy-data/64KB-min.json');
-    //$response = Http::connectTimeout(3)->acceptJson()->get('https://c2e62ff23d1049ae96c91eb27fd47232.api.mockbin.io');
+    $response = Http::connectTimeout(3)->acceptJson()->get('https://c2e62ff23d1049ae96c91eb27fd47232.api.mockbin.io');
     //$response = Http::connectTimeout(3)->acceptJson()->get('https://5e51e2d0d30746668995d577f2a44bd7.api.mockbin.io');
     //$response = Http::connectTimeout(3)->acceptJson()->get('https://a333509767d449edaa7c651691307108.api.mockbin.io'); // ha nincs [] között nem eszi meg
+        
+    //$response = Http::acceptJson()->get('localhost:8000/api/menu');
 
-    //curl -X POST -H "Content-Type: application/json" -d '{"message": "Hello World"}' https://6b122fabaede44559e25ed25d279d924.api.mockbin.io/
-    //$response = Http::get('/api/menu');
 
+    
     // Check if the request was successful
     if ($response->successful()) {
-        $menuItems = $response->json();
+        $menuItems = $response->json();        
     } else {
         // If the request failed, handle the error accordingly
         abort(500, 'Failed to fetch menu items');
     }
-
+    
+    
     // Render the view and pass the menu items to it
     return view('menu', ['menuItems' => $menuItems]);
 
