@@ -1,44 +1,26 @@
-export default App;
-import React, { useEffect, useState } from 'react';
+
 import './App.css';
+import UserProfile from './components/UserProfile';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
 
 function App() {
-  const [data, setData] = useState(null);
+  // application main component
+  const loggedIn = false; // dummy state
 
-  useEffect(() => {
-    fetchMenu();
-    fetchDish(1);
-  }, []);
-
-  // list all menu items
-  const fetchMenu = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/api/menu');
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  // show a single dish
-  const fetchDish = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:8000/api/menu/${id}`);
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
+  // redirect user based on state
   return (
-    <div>
-      {data ? (
-        <p>{JSON.stringify(data)}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <main>
+      {loggedIn ?
+        <UserProfile />
+        :
+        <>    
+          <RegisterForm />
+          <LoginForm />
+        </>
+      }
+    </main>
   );
 }
+
+export default App;
