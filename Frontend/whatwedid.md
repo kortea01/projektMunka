@@ -18,4 +18,4 @@ create a new very basic `app.jsx` file under `./src/`
  celebrate
 
 
- 
+ !component filenames and functions must start with Uppercase letter!
