@@ -22,29 +22,29 @@ use App\Http\Controllers\Api\UserController;
 # 
 
 # public endpoints
-Route::post('login', 'App\Http\Controllers\AuthController@login');
-Route::post('register', 'App\Http\Controllers\AuthController@register');
-Route::post('logout', 'App\Http\Controllers\AuthController@logout');
+Route::post('login', 'App\Http\Controllers\AuthController@login');          // ok
+Route::post('register', 'App\Http\Controllers\AuthController@register');    // ok       
+Route::post('logout', 'App\Http\Controllers\AuthController@logout');        // ? destory tokens / invaidate session?
 
-Route::get('menu', 'App\Http\Controllers\DishController@index');
-Route::get('menu/{id}', 'App\Http\Controllers\DishController@show');
-Route::get('menu/category/{category}', 'App\Http\Controllers\DishController@categoryIndex');
+Route::get('menu', 'App\Http\Controllers\DishController@index');                              // ok 
+Route::get('menu/{id}', 'App\Http\Controllers\DishController@show')->where('id', '[0-9]+');   // ok
+Route::get('menu/category/{category}', 'App\Http\Controllers\DishController@categoryIndex');  // ok
 
-Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');
-Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show');
+Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');                                   // ok
+Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show')->where('id', '[0-9]+');        // ok
 
 # protected endpoints
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('user', 'App\Http\Controllers\Api\UserController@index');
-    Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show');
-    Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update');
+    Route::get('user', 'App\Http\Controllers\Api\UserController@index');                                // ok
+    Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show')->where('id', '[0-9]+');     // ok
+    Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // TODO! FROM THIS POINT 
 
     Route::post('menu', 'App\Http\Controllers\DishController@store');
-    Route::put('menu/{id}', 'App\Http\Controllers\DishController@update');
-    Route::delete('menu/{id}', 'App\Http\Controllers\DishController@destroy');
+    Route::put('menu/{id}', 'App\Http\Controllers\DishController@update')->where('id', '[0-9]+');
+    Route::delete('menu/{id}', 'App\Http\Controllers\DishController@destroy')->where('id', '[0-9]+');
 
     Route::post('ingredients', 'App\Http\Controllers\IngredientController@store');
-    Route::put('ingredients/{id}', 'App\Http\Controllers\IngredientController@update');
-    Route::delete('ingredients/{id}', 'App\Http\Controllers\IngredientController@destroy');
+    Route::put('ingredients/{id}', 'App\Http\Controllers\IngredientController@update')->where('id', '[0-9]+');
+    Route::delete('ingredients/{id}', 'App\Http\Controllers\IngredientController@destroy')->where('id', '[0-9]+');
 }
 );

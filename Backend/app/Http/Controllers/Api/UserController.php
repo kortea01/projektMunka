@@ -37,16 +37,29 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    public function show(User $user)
+    public function show(User $user, $id)
     {
-        return response()->json($user);
+        $user = Auth::user();
+        // admins and managers will see all users
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {  // intelephense false positive?
+            return User::findOrFail($id);
+        } else { // others will get their own data
+            return response()->json($user);
+            //return response()->json(["message" => "Unauthorized"], 401);
+        }
     }
 
-    public function update(StoreUserRequest $request, User $user)
+    public function update(StoreUserRequest $request, $id)
     {
-        $user->update($request->all());
-
-        return response()->json($user);
+        $user = Auth::user(); 
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $target = User::findOrFail($id);
+            $target->update($request->all());
+            return response()->json(["message" => "User Successfully updated.",$target], 200);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
+        //return response()->json("dafuq");
     }
 
     public function destroy(User $user)
