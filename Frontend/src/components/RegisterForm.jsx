@@ -45,9 +45,9 @@ function RegisterForm() {
         const data = await response.json();
         console.log(data);
         if (response.ok) {
-            alart("Sikeres regisztráció!");
+            alert("Sikeres regisztráció!");
         } else {
-            alart(data.message);
+            alert(data.message);
         }
         
     }

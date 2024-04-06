@@ -1,9 +1,10 @@
 import { useRef } from "react";
+import PropTypes from "prop-types";
 
-function LoginForm() {
+function LoginForm(props) {
     // Your code for the login form goes here
 
-    const apiUrl = "http://localhost:8000/api" 
+    const {onSubmit} = props;
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
@@ -12,47 +13,28 @@ function LoginForm() {
         const user = {
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            role: "customer"
-        
+            //role: "customer"       
         };
-        login(user);
-
-
-    }
-
-    const login = async userData => {
-        const url = apiUrl + "/login";
-        const response = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(userData),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-
-        });
-        const data = await response.json();
-        console.log(data);
-        if (response.ok) {
-            alart("Sikeres belépés!");
-        } else {
-            alart(data.message);
-        }
-        
+        onSubmit(user);
+    
     }
 
     return (<form style={{marginTop: "10px", marginBottom: "10px"}} onSubmit={handleFormSubmit}>
         <div>
-            <label htmlFor="email">E-mail:</label>
-            <input type="email" id="login_email" placeholder="Email" ref={emailRef} />
+            <label htmlFor="loginEmail">E-mail:</label>
+            <input type="email" id="loginEmail" placeholder="E-mail" ref={emailRef} />
         </div>
         <div>
-            <label htmlFor="password">Jelszó:</label>
-            <input type="password" id="login_password" placeholder="Jelszó" ref={passwordRef}/>
+            <label htmlFor="loginPassword">Jelszó:</label>
+            <input type="password" id="loginPassword" placeholder="Jelszó" ref={passwordRef}/>
         </div>
 
-            <button type="submit">Login</button>
+            <button type="submit">Belépés</button>
     </form>);
+}
+
+LoginForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
 }
 
 export default LoginForm;
