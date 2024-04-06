@@ -17,8 +17,8 @@ function App() {
     const response = await fetch(url, {
         method: "GET",
         headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer " + token
+            Accept: "application/json",
+            Authorization: "Bearer " + token
         }
     });
     const data = await response.json();
@@ -59,13 +59,47 @@ function App() {
     } else {
         alert(data.message);
     }
+  };
+
+  const logout = async () => {
+    const url = apiUrl + "/logout";
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer " + token
+          }
+    })
+    if (response.ok) {
+        setToken('');
+    } else {
+      const data = await response.json();
+      alert(data.message);
+    }
+  }
+
+  const logoutEverywhere = async () => {
+    const url = apiUrl + "/logout-everywhere";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+          Accept: "application/json",
+          Authorization: "Bearer " + token
+        }
+  })
+  if (response.ok) {
+      setToken('');
+  } else {
+    const data = await response.json();
+    alert(data.message);
+  }
   }
 
   // redirect user based on state
   return (
     <main>
       {userData !== null ?
-        <UserProfile user={userData} />
+        <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>
         :
         <>    
           <RegisterForm />
