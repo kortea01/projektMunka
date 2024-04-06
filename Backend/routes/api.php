@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 #use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,9 @@ Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show')
 
 # protected endpoints
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('user', 'App\Http\Controllers\AuthController@index');
-    Route::get('user/{id}', 'App\Http\Controllers\AuthController@show');
-    Route::put('user/{id}', 'App\Http\Controllers\AuthController@update');
+    Route::get('user', 'App\Http\Controllers\Api\UserController@index');
+    Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show');
+    Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update');
 
     Route::post('menu', 'App\Http\Controllers\DishController@store');
     Route::put('menu/{id}', 'App\Http\Controllers\DishController@update');

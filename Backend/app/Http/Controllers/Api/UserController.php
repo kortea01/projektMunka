@@ -6,13 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 #use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
-        return User::all();
+        $user = Auth::user();
+        // admins and managers will see all users
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {  // intelephense false positive?
+            return User::all();
+        } else { // others will get their own data
+            return response()->json($user);
+            //return response()->json(["message" => "Unauthorized"], 401);
+        }
     }
 
     public function store(StoreUserRequest $request)
