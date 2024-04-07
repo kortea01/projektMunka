@@ -24,7 +24,6 @@ use App\Http\Controllers\Api\UserController;
 # public endpoints
 Route::post('login', 'App\Http\Controllers\AuthController@login');          // ok
 Route::post('register', 'App\Http\Controllers\AuthController@register');    // ok       
-Route::post('logout', 'App\Http\Controllers\AuthController@logout');        // ? destory tokens / invaidate session?
 
 Route::get('menu', 'App\Http\Controllers\DishController@index');                              // ok 
 Route::get('menu/{id}', 'App\Http\Controllers\DishController@show')->where('id', '[0-9]+');   // ok
@@ -35,6 +34,9 @@ Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show')
 
 # protected endpoints
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', 'App\Http\Controllers\AuthController@logout');        // ? destory tokens / invaidate session?
+    Route::post('logout-everywhere', 'App\Http\Controllers\AuthController@logoutEverywhere'); // ? destory all tokens / invaidate all sessions?
+
     Route::get('user', 'App\Http\Controllers\Api\UserController@index');                                // ok
     Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show')->where('id', '[0-9]+');     // ok
     Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // TODO! FROM THIS POINT 

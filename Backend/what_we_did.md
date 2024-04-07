@@ -23,3 +23,6 @@ make userstore request
 make auth controller
 add api routes
 
+generate token with TokenCan func on login
+check TokenCan abilities on endpoints
+

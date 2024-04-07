@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'User created successfully!',
-        ]);
+        ], 200);
     }
 
 
@@ -51,25 +51,29 @@ class AuthController extends Controller
             'token' => $token,
             'Type' => 'Bearer',
             'role' => $user->role // include user role in response
-        ]);
+        ], 200);
     }
 
-    public function logout(Request $request) {
-        // Token által hitelesített felhasználó lekérdezése
-        // $user = $request->user();
-        // $user = Auth::user();
-
-        $user = auth()->user();
-        /** @disregard P1013 Undefined method */
-        $user->currentAccessToken()->delete();
-        return response()->noContent();
+    public function logout() {
+        $user = Auth::user();
+        if ($user) {
+            $user->currentAccessToken()->delete();
+            return response()->json(['message' => 'OK'], 200);
+        } else {
+            return response()->json(['message' => 'No active user session'], 401);
+        }
+        
     }
 
     public function logoutEverywhere() {
-        $user = auth()->user();
-        /** @disregard P1013 Undefined method */
-        $user->tokens()->delete();
-        return response()->noContent();
+        $user = Auth::user();
+        if ($user) {
+            $user->tokens()->delete();
+            return response()->json(['message' => 'OK'], 200);
+        } else {
+            return response()->json(['message' => 'No active user session'], 401);
+        }
+
     }
 
 }

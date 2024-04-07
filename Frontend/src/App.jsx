@@ -46,7 +46,7 @@ function App() {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json"
         }
 
@@ -54,11 +54,12 @@ function App() {
     const data = await response.json();
     console.log(data);
     if (response.ok) {
-        setToken(data.token);
-        alert("Sikeres belépés!");
-    } else {
-        alert(data.message);
-    }
+      setToken(data.token);
+      loadUserData();
+      alert("Sikeres belépés!");
+  } else {
+      alert(data.message);
+  }
   };
 
   const logout = async () => {
@@ -66,8 +67,8 @@ function App() {
     const response = await fetch(url, {
         method: "POST",
         headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer " + token
+            Accept: "application/json",
+            Authorization: "Bearer " + token
           }
     })
     if (response.ok) {
