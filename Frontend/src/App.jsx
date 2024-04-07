@@ -13,6 +13,7 @@ function App() {
   const [userData, setUserData] = useState(null);
 
   const loadUserData = async () => {
+    const token = localStorage.getItem('token');
     const url = apiUrl + "/user";
     const response = await fetch(url, {
         method: "GET",
@@ -25,10 +26,18 @@ function App() {
     if (response.ok) {
       setUserData(data);
     } else {
+      localStorage.removeItem('token');
       setToken('');
       
     }
-  } 
+  }
+  
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -54,7 +63,12 @@ function App() {
     const data = await response.json();
     console.log(data);
     if (response.ok) {
-      setToken(data.token);
+      const tokenData = data.token.split('|');
+      const token = tokenData[1];
+      setToken(token);
+      // Add the following line to make the token available in other functions
+      localStorage.setItem('token', token);
+      console.log(token);
       loadUserData();
       alert("Sikeres belépés!");
   } else {
@@ -72,7 +86,9 @@ function App() {
           }
     })
     if (response.ok) {
+        localStorage.removeItem('token');
         setToken('');
+        alert("Sikeres kijelentkezés!");
     } else {
       const data = await response.json();
       alert(data.message);
@@ -89,7 +105,9 @@ function App() {
         }
   })
   if (response.ok) {
+      localStorage.removeItem('token');
       setToken('');
+      alert("Sikeres kijelentkezés!");
   } else {
     const data = await response.json();
     alert(data.message);
