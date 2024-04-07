@@ -1,0 +1,67 @@
+1., enable mod_rewrite
+
+
+2., setup virutal hosts
+
+```
+<VirtualHost *:8000>
+    ServerAdmin admin@example.com
+    ServerName localhost
+    DocumentRoot /var/www/html/Backend/public/  <<<  YOUR WORKING FOLER
+
+    <Directory /var/www/html/Backend/public/>   <<<  YOUR WORKING FOLER
+            AllowOverride All
+            Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+3., setup listen port to 8000
+
+
+......................
+A xampp virtual hostot egy külön fileban kell beállítani, de ahogy berakom a DocumentRootot, hibára fut a request. 403 az access logban
+c:\xampp\apache\conf\extra\httpd-vhosts.conf :
+...
+<VirtualHost *:8000>
+    ServerAdmin postmaster@localhost
+    DocumentRoot "c:/Users/korte/source/repos/projektMunka/Backend/public"
+    ServerName localhost
+    ##ErrorLog "/logs/error.log"
+    ##CustomLog "/logs/access.log" common
+</VirtualHost>
+...
+ha pl az ErrorLog és CustomLog részt kikommentezem, el sem indul xampp alatt az apache
+
+error.log:
+[Tue Apr 02 23:37:35.155164 2024] [authz_core:error] [pid 17860:tid 1920] [client ::1:56939] AH01630: client denied by server configuration: C:/Users/korte/source/repos/projektMunka/Backend/public/favicon.ico, referer: http://localhost:8000/menu2
+
+access.log:
+[02/Apr/2024:23:37:35 +0200] "GET /favicon.ico HTTP/1.1" 403 300 "http://localhost:8000/menu2" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+
+felgyújtom :)
+
+------------UPDATE-----------
+Siker XAMPP-al, pár órát szívtam vele tegnap este ahoyg látjátok fentebb, de itt a jó config végre, a windows miatt nem úgy megy minden mint linux alatt 
+és nincs ugye symlink sem és itt még bejön nálunk hogy windows 11 van... na mind1, szóval kellett még prá extra, pl a <Direcotory>, akkor már látta a laraveleses 
+root-ot is, de belső hívások még nem voltak elérhetőek, kelle még pár option is, főleg a 'AllowOverride all' és 'Allow from all'
+egy jól működő vhost congfig (path: c:\xampp\apache\conf\extra\httpd-vhosts.conf )
+
+
+<VirtualHost *:8000>
+    ServerAdmin postmaster@localhost
+    DocumentRoot "c:/Users/korte/source/repos/projektMunka/Backend/public/"
+	ServerName localhost
+	<Directory "c:/Users/korte/source/repos/projektMunka/Backend/public/">
+		##Options Indexes FollowSymlinks Includes ExecCGI
+		Require all granted
+		AllowOverride all
+		Allow from all
+	</Directory>    
+	
+    ##ErrorLog "logs/error.log"
+    ##CustomLog "logs/access.log" common
+</VirtualHost>
