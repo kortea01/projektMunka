@@ -1,9 +1,14 @@
 
 import './App.css';
-import UserProfile from './components/UserProfile';
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
+import UserProfile from './pages/UserProfile';
+import RegisterForm from './pages/RegisterPage';
+import LoginForm from './pages/LoginPage';
 import { useEffect, useState } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+
 
 function App() {
   
@@ -11,6 +16,30 @@ function App() {
   const apiUrl = "http://localhost:8000/api"
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState(null);
+
+  const router = createBrowserRouter([{
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/user-profile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/register",
+        element: <RegisterForm />,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
+      }
+    ],     
+  },
+]);
 
   const loadUserData = async () => {
     const token = localStorage.getItem('token');
@@ -116,6 +145,8 @@ function App() {
 
   // redirect user based on state
   return (
+    <div>
+      <RouterProvider router={router} />
     <main>
       {userData !== null ?
         <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>
@@ -126,6 +157,7 @@ function App() {
         </>
       }
     </main>
+    </div>
   );
 }
 
