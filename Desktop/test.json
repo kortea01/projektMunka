@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "category": "soup",
+    "name": "Minestrone",
+    "description": "Classic Italian vegetable soup",
+    "img_url": null,
+    "ingredients": [
+      "10",
+      "23",
+      "45"
+    ],
+    "price": 599
+  },
+  {
+    "id": 3,
+    "category": "soup",
+    "name": "Pasta e Fagioli",
+    "description": "Pasta and bean soup",
+    "img_url": null,
+    "ingredients": [
+      "21",
+      "39",
+      "47"
+    ],
+    "price": 549
+  },
+  {
+    "id": 2,
+    "category": "soup",
+    "name": "Zuppa Toscana",
+    "description": "Tuscan sausage and kale soup",
+    "img_url": null,
+    "ingredients": [
+      "15",
+      "32",
+      "78"
+    ],
+    "price": 699
+  },
+  {
+    "id": 6,
+    "category": "salad",
+    "name": "Arugula",
+    "description": "Arugula, cherry tomatoes",
+    "img_url": null,
+    "ingredients": [
+      "18",
+      "36",
+      "44"
+    ],
+    "price": 699
+  },
+  {
+    "id": 5,
+    "category": "salad",
+    "name": "Caesar",
+    "description": "Romaine lettuce and croutons",
+    "img_url": null,
+    "ingredients": [
+      "14",
+      "27",
+      "49"
+    ],
+    "price": 849
+  },
+  {
+    "id": 4,
+    "category": "salad",
+    "name": "Caprese",
+    "description": "Fresh tomatoes and mozzarella",
+    "img_url": null,
+    "ingredients": [
+      "8",
+      "12",
+      "35"
+    ],
+    "price": 799
+  },
+  {
+    "id": 7,
+    "category": "pizza",
+    "name": "Margherita",
+    "description": "Pizza dough, tomato sauce, mozzarella, basil",
+    "img_url": null,
+    "ingredients": [
+      "17",
+      "7",
+      "8",
+      "13"
+    ],
+    "price": 1099
+  },
+  {
+    "id": 8,
+    "category": "pizza",
+    "name": "Pepperoni",
+    "description": "Tomato sauce, mozzarella, pepperoni",
+    "img_url": null,
+    "ingredients": [
+      "17",
+      "7",
+      "8",
+      "9",
+      "31"
+    ],
+    "price": 1199
+  },
+  {
+    "id": 9,
+    "category": "pizza",
+    "name": "Quattro Stagioni",
+    "description": "Pizza dough, tomato sauce, mozzarella, artichokes, ham, mushrooms",
+    "img_url": null,
+    "ingredients": [
+      "17",
+      "7",
+      "8",
+      "11",
+      "19",
+      "28"
+    ],
+    "price": 1249
+  },
+  {
+    "id": 11,
+    "category": "pasta",
+    "name": "Fettuccine Alfredo",
+    "description": "Creamy parmesan sauce",
+    "img_url": null,
+    "ingredients": [
+      "16",
+      "24",
+      "42"
+    ],
+    "price": 1149
+  },
+  {
+    "id": 12,
+    "category": "pasta",
+    "name": "Lasagna",
+    "description": "Layers of pasta, meat sauce",
+    "img_url": null,
+    "ingredients": [
+      "22",
+      "30",
+      "48"
+    ],
+    "price": 1299
+  },
+  {
+    "id": 10,
+    "category": "pasta",
+    "name": "Spaghetti Bolognese",
+    "description": "Traditional meat sauce",
+    "img_url": null,
+    "ingredients": [
+      "20",
+      "29",
+      "37"
+    ],
+    "price": 999
+  },
+  {
+    "id": 14,
+    "category": "dessert",
+    "name": "Cannoli",
+    "description": "Fried pastry dough, sweet cream",
+    "img_url": null,
+    "ingredients": [
+      "33",
+      "40",
+      "46"
+    ],
+    "price": 549
+  },
+  {
+    "id": 15,
+    "category": "dessert",
+    "name": "Panna Cotta",
+    "description": "Sweetened cream, vanilla",
+    "img_url": null,
+    "ingredients": [
+      "34",
+      "41",
+      "43"
+    ],
+    "price": 499
+  },
+  {
+    "id": 13,
+    "category": "dessert",
+    "name": "Tiramisu",
+    "description": "Coffee-flavored Italian dessert",
+    "img_url": null,
+    "ingredients": [
+      "25",
+      "38",
+      "50"
+    ],
+    "price": 699
+  },
+  {
+    "id": 16,
+    "category": "drinks",
+    "name": "Espresso",
+    "description": "Strong black coffee",
+    "img_url": null,
+    "ingredients": [
+      "1",
+      "3",
+      "5"
+    ],
+    "price": 249
+  },
+  {
+    "id": 17,
+    "category": "drinks",
+    "name": "Limoncello",
+    "description": "Lemon-flavored liqueur",
+    "img_url": null,
+    "ingredients": [
+      "2",
+      "4",
+      "6"
+    ],
+    "price": 799
+  },
+  {
+    "id": 18,
+    "category": "drinks",
+    "name": "Prosecco",
+    "description": "Italian sparkling wine",
+    "img_url": null,
+    "ingredients": [
+      "45",
+      "47",
+      "50"
+    ],
+    "price": 999
+  }
+]
