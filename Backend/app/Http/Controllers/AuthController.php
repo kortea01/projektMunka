@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function register( StoreUserRequest $request){
-        #$user = User::create($request->validated());
+        
         $user = User::create([
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
@@ -24,28 +24,17 @@ class AuthController extends Controller
             "email" => $request->email,
             "password" => Hash::make($request->password),
         ]);
-        #$token = $user->createToken('AuthToken')->plainTextToken;
 
         return response()->json([
             'message' => 'User created successfully!',
-        #    'token' =>$token,
-        #    'Type' => 'Bearer'
         ]);
     }
 
 
     public function login(Request $request)
     {
-        /*$fields = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);*/
-
-        #$user = User::where('email', $fields['email'])->first();
         $user = User::where("email", $request->email)->first();
-
-        #if (!$user || !Hash::check($fields['password'], $user->password)) {
-        #if (!$user || !bcrypt($fields['password']) == $user->password) {
+        
         if (!$user) {
             return response()->json(["message" => "User not valid"], 401);
         }
@@ -54,9 +43,9 @@ class AuthController extends Controller
             return response()->json(["message" => "Incorrect password"], 401);
         }
 
-        #$token = $user->createToken('my-token', ['role' => $user->role, 'expires_at' => now()->addMinutes(5)])->plainTextToken;
-        $token = $user->createToken("AuthToken")->plainTextToken;
-
+        $role = $user->role;
+        $token = $user->createToken('AuthToken', [$role])->plainTextToken;
+        
         return response()->json([
             'message' => 'Succesfull login!',
             'token' => $token,

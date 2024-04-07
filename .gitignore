@@ -1,6 +1,10 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+
+.vs/
+.idea/
+#Frontend/
+/Backend/.phpunit.result.cache
+#/Backend/database/migrations
+/Backend/.rnd
 
 /.vs/projektMunka/FileContentIndex/23892af9-c329-47df-a037-8749667fea21.vsidx
 /.vs/projektMunka/FileContentIndex/6704d149-6087-4ba7-9e59-fb6825bb43d8.vsidx
@@ -18,6 +22,3 @@
 /.vs/projektMunka/FileContentIndex/6704d149-6087-4ba7-9e59-fb6825bb43d8.vsidx
 /.vs/projektMunka/v17/.wsuo
 /.vs/VSWorkspaceState.json
-/Backend/.phpunit.result.cache
-/Backend/database/migrations
-/Backend/.rnd
