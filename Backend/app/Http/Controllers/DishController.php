@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -47,6 +48,7 @@ class DishController extends Controller
                 'ingredients' => $request->ingredients,
                 'price' => $request->price,
             ]);
+            $dish->save(); // kell ez ide?
             return response()->json(["message" => "Dish Successfully updated.",$dish], 200);
         } else {
             return response()->json(["message" => "Unauthorized"], 401);
@@ -59,7 +61,21 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        $user = Auth::user(); 
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $dish = Dish::Create([
+                'category' => $request->category,
+                'name' => $request->name,
+                'description' => $request->description,
+                'img_url' => $request->image,
+                'ingredients' => $request->ingredients,
+                'price' => $request->price,
+            ]);
+            $dish->save(); // kell ez ide ? omst akkor store vagy create ?
+            return response()->json(["message" => "Dish Successfully updated.",$dish], 200);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
     }
 
     /**

@@ -44,7 +44,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show')->where('id', '[0-9]+');     // ok
     Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // TODO! FROM THIS POINT 
 
-    Route::post('menu', 'App\Http\Controllers\DishController@store');
+    Route::post('menu', 'App\Http\Controllers\DishController@create'); // create or store ?
     Route::put('menu/{id}', 'App\Http\Controllers\DishController@update')->where('id', '[0-9]+');
     Route::delete('menu/{id}', 'App\Http\Controllers\DishController@destroy')->where('id', '[0-9]+');
 
