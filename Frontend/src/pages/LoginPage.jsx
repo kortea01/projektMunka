@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import PropTypes from "prop-types";
 
-function LoginForm(props) {
+
+function LoginPage(props) {
     // Your code for the login form goes here
 
     const {onSubmit} = props;
@@ -33,8 +34,8 @@ function LoginForm(props) {
     </form>);
 }
 
-LoginForm.propTypes = {
+LoginPage.propTypes = {
     onSubmit: PropTypes.func.isRequired
 }
 
-export default LoginForm;
+export default LoginPage;

@@ -21,8 +21,15 @@ class StoreDishRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        $rules = [
+            'name' => 'required|string|max:255',	
+            'category' => 'required|string|in:soup,salad,pizza,pasta,dessert,drinks,risotto',
+            'description' => 'required|string|max:255',
+            'img_url' => 'required|string|max:255',	
+            'ingredients' => 'required|json',
+            'price' => 'required|numeric|min:0'
         ];
+        
+        return $rules;
     }
 }

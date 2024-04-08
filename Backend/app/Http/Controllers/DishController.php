@@ -7,6 +7,7 @@ use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
 use App\Models\Ingredient;
+use Illuminate\Http\Request;
 
 class DishController extends Controller
 {
@@ -19,6 +20,12 @@ class DishController extends Controller
         return Dish::orderBy('category')->orderBy('name')->paginate(50);
         
     }
+    public function listAll()
+    {
+        //
+        return Dish::orderBy('category')->orderBy('name')->get()->toJson();
+        
+    }
 
     public function categoryIndex($category)
     {
@@ -28,9 +35,23 @@ class DishController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $user = Auth::user(); 
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $dish = Dish::Create([
+                'category' => $request->category,
+                'name' => $request->name,
+                'description' => $request->description,
+                'img_url' => $request->image,
+                'ingredients' => $request->ingredients,
+                'price' => $request->price,
+            ]);
+            return response()->json(["message" => "Dish Successfully updated.",$dish], 200);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
+
     }
 
     /**

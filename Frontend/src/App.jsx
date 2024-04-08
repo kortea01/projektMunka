@@ -1,8 +1,8 @@
 
 import './App.css';
 import UserProfile from './pages/UserProfile';
-import RegisterForm from './pages/RegisterPage';
-import LoginForm from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 import { useEffect, useState } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
@@ -11,45 +11,23 @@ import HomePage from './pages/HomePage';
 
 
 function App() {
-  
+
   // application main component
   const apiUrl = "http://localhost:8000/api"
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState(null);
 
-  const router = createBrowserRouter([{
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <HomePage />,
-      },
-      {
-        path: "/user-profile",
-        element: <UserProfile />,
-      },
-      {
-        path: "/register",
-        element: <RegisterForm />,
-      },
-      {
-        path: "/login",
-        element: <LoginForm />,
-      }
-    ],     
-  },
-]);
+
 
   const loadUserData = async () => {
     const token = localStorage.getItem('token');
     const url = apiUrl + "/user";
     const response = await fetch(url, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            Authorization: "Bearer " + token
-        }
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + token
+      }
     });
     const data = await response.json();
     if (response.ok) {
@@ -57,10 +35,10 @@ function App() {
     } else {
       localStorage.removeItem('token');
       setToken('');
-      
+
     }
   }
-  
+
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
@@ -81,12 +59,12 @@ function App() {
   const login = async formData => {
     const url = apiUrl + "/login";
     const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-        }
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
 
     });
     const data = await response.json();
@@ -100,24 +78,24 @@ function App() {
       console.log(token);
       loadUserData();
       alert("Sikeres belépés!");
-  } else {
+    } else {
       alert(data.message);
-  }
+    }
   };
 
   const logout = async () => {
     const url = apiUrl + "/logout";
     const response = await fetch(url, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            Authorization: "Bearer " + token
-          }
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + token
+      }
     })
     if (response.ok) {
-        localStorage.removeItem('token');
-        setToken('');
-        alert("Sikeres kijelentkezés!");
+      localStorage.removeItem('token');
+      setToken('');
+      alert("Sikeres kijelentkezés!");
     } else {
       const data = await response.json();
       alert(data.message);
@@ -129,36 +107,70 @@ function App() {
     const response = await fetch(url, {
       method: "POST",
       headers: {
-          Accept: "application/json",
-          Authorization: "Bearer " + token
-        }
-  })
-  if (response.ok) {
+        Accept: "application/json",
+        Authorization: "Bearer " + token
+      }
+    })
+    if (response.ok) {
       localStorage.removeItem('token');
       setToken('');
       alert("Sikeres kijelentkezés!");
-  } else {
-    const data = await response.json();
-    alert(data.message);
-  }
+    } else {
+      const data = await response.json();
+      alert(data.message);
+    }
   }
 
+  const router = createBrowserRouter([{
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/user-profile",
+        element: <UserProfile  user={userData} />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage onSubmit={login} />,
+      }
+    ],
+  },
+  ]);
   // redirect user based on state
   return (
-    <div>
+
+    <div className='wrapper'>
+
       <RouterProvider router={router} />
-    <main>
-      {userData !== null ?
-        <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>
-        :
-        <>    
-          <RegisterForm />
-          <LoginForm onSubmit={login} />
-        </>
-      }
-    </main>
+
     </div>
   );
+  //  // redirect user based on state
+  //  return (
+  //  
+  //    <div>
+  //      <RouterProvider router={router} />
+  //      
+  //    <main>
+  //      /*{userData !== null ?
+  //        <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>
+  //        :
+  //        <>    
+  //          <RegisterForm />
+  //          <LoginForm onSubmit={login} />
+  //        </>
+  //      }*/
+  //    </main>
+  //    </div>
+  //  );
 }
 
 export default App;

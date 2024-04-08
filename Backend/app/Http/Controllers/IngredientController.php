@@ -16,7 +16,12 @@ class IngredientController extends Controller
         //
         return Ingredient::orderBy('name')->paginate(50);
     }
-
+    public function listAll()
+    {
+        //
+        return Ingredient::all()->toJson();
+        
+    }
     /**
      * Show the form for creating a new resource.
      */

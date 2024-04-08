@@ -16,13 +16,23 @@ class UserController extends Controller
         $user = Auth::user();
         // admins and managers will see all users
         if ($user->tokenCan('admin') || $user->tokenCan('manager')) {  // intelephense false positive?
-            return User::all();
+            return User::paginate(50);
         } else { // others will get their own data
-            return response()->json($user);
+            return response()->json($user, 200);
             //return response()->json(["message" => "Unauthorized"], 401);
         }
     }
-
+    public function listAll()
+    {
+        $user = Auth::user();
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {  // intelephense false positive?
+            return User::all();
+        } else { // others will get their own data
+            return response()->json($user, 200);
+            //return response()->json(["message" => "Unauthorized"], 401);
+        }
+        
+    }
     public function store(StoreUserRequest $request)
     {
         /*$user = User::create($request->validated());
@@ -55,7 +65,7 @@ class UserController extends Controller
         if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
             $target = User::findOrFail($id);
             $target->update($request->all());
-            return response()->json(["message" => "User Successfully updated.",$target], 200);
+            return response()->json(["message" => "User Successfully updated.", $target], 201);
         } else {
             return response()->json(["message" => "Unauthorized"], 401);
         }
