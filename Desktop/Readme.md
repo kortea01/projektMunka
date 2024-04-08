@@ -1,1 +1,0 @@
-This folder contains the C# .NET Framework form application for the Restaurant
