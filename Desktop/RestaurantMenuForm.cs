@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -19,6 +19,7 @@ namespace RestaurantDesktopApp
             {
                 //var value = ConfigurationSettings.AppSettings;
                 var value = System.Configuration.ConfigurationSettings.AppSettings;
+               
 
                 result = value[keyName];
             }
@@ -108,6 +109,16 @@ namespace RestaurantDesktopApp
         private void ingerdientsCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_Create_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Read_Click(object sender, EventArgs e)
+        {
+            refreshMenu();
         }
     }
 }
