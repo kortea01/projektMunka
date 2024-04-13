@@ -19,16 +19,17 @@ use App\Http\Controllers\Api\UserController;
 # Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 #     return $request->user();
 # });
-# 
+#
 
 # public endpoints
 Route::post('login', 'App\Http\Controllers\AuthController@login');          // ok
-Route::post('register', 'App\Http\Controllers\AuthController@register');    // ok       
+Route::post('register', 'App\Http\Controllers\AuthController@register');    // ok
 
 Route::get('menu', 'App\Http\Controllers\DishController@index');                              // ok
 Route::get('menu-all', 'App\Http\Controllers\DishController@listAll');                        // ok
 Route::get('menu/{id}', 'App\Http\Controllers\DishController@show')->where('id', '[0-9]+');   // ok
 Route::get('menu/category/{category}', 'App\Http\Controllers\DishController@categoryIndex');  // ok
+Route::delete('menu-all/{id}', 'App\Http\Controllers\DishController@destroy')->where('id', '[0-9]+'); //ok
 
 Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');                                   // ok
 Route::get('ingredients-all', 'App\Http\Controllers\IngredientController@listAll');                             // ok
@@ -42,7 +43,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', 'App\Http\Controllers\Api\UserController@index');                                // ok
     Route::get('user-all', 'App\Http\Controllers\Api\UserController@listAll');                          // ok
     Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show')->where('id', '[0-9]+');     // ok
-    Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // TODO! FROM THIS POINT 
+    Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // TODO! FROM THIS POINT
 
     Route::post('menu', 'App\Http\Controllers\DishController@create'); // create or store ?
     Route::put('menu/{id}', 'App\Http\Controllers\DishController@update')->where('id', '[0-9]+');

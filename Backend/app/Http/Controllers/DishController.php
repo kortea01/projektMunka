@@ -19,13 +19,13 @@ class DishController extends Controller
     {
         //
         return Dish::orderBy('category')->orderBy('name')->paginate(50);
-        
+
     }
     public function listAll()
     {
         //
         return Dish::orderBy('category')->orderBy('name')->get()->toJson();
-        
+
     }
 
     public function categoryIndex($category)
@@ -38,7 +38,7 @@ class DishController extends Controller
      */
     public function create(Request $request)
     {
-        $user = Auth::user(); 
+        $user = Auth::user();
         if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
             $dish = Dish::Create([
                 'category' => $request->category,
@@ -61,7 +61,7 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        $user = Auth::user(); 
+        $user = Auth::user();
         if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
             $dish = Dish::Create([
                 'category' => $request->category,
@@ -110,8 +110,16 @@ class DishController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dish $dish)
+    public function destroy($id)
     {
-        //
+        $dish = Dish::find($id);
+
+        if ($dish) {
+            $dish->delete();
+            return response()->json(['message' => 'Dish deleted successfully'], 200);
+        } else {
+            return response()->json(['message' => 'Dish not found'], 404);
+        }
     }
 }
+
