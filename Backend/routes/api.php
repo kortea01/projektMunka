@@ -34,6 +34,7 @@ Route::delete('menu-all/{id}', 'App\Http\Controllers\DishController@destroy')->w
 Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');                                   // ok
 Route::get('ingredients-all', 'App\Http\Controllers\IngredientController@listAll');                             // ok
 Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show')->where('id', '[0-9]+');        // ok
+Route::delete('ingredients-all/{id}', 'App\Http\Controllers\IngredientController@destroy')->where('id', '[0-9]+'); // testing
 
 # protected endpoints
 Route::middleware('auth:sanctum')->group(function () {

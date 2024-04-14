@@ -20,7 +20,7 @@ class IngredientController extends Controller
     {
         //
         return Ingredient::all()->toJson();
-        
+
     }
     /**
      * Show the form for creating a new resource.
@@ -67,8 +67,14 @@ class IngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ingredient $ingredient)
+    public function destroy($id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        if ($ingredient) {
+            $ingredient->delete();
+            return response()->json(['message' => 'Ingredient deleted successfully'], 200);
+        } else {
+            return response()->json(['message' => 'Ingredient not found'], 404);
+        }
     }
 }
