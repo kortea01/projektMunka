@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIngredientRequest;
 use App\Http\Requests\UpdateIngredientRequest;
 use App\Models\Ingredient;
+use Illuminate\Http\Request;
 
 class IngredientController extends Controller
 {
@@ -75,6 +76,22 @@ class IngredientController extends Controller
             return response()->json(['message' => 'Ingredient deleted successfully'], 200);
         } else {
             return response()->json(['message' => 'Ingredient not found'], 404);
+        }
+    }
+
+    public function create_no_auth(Request $request)
+    {
+        $ingredient = Ingredient::Create([
+            'name' => $request->name,
+            'allergen' => $request->allergen,
+            'in_Stock'  => $request->in_stock,
+        ]);
+
+        if ($ingredient) {
+            $ingredient->save();
+            return response()->json(["message" => "Ingerdient Successfully saved.", $ingredient], 200);
+        } else {
+            return response()->json(["message" => "Ingerdient could not been saved"], 401);
         }
     }
 }

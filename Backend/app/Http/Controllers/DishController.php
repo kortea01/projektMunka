@@ -121,5 +121,51 @@ class DishController extends Controller
             return response()->json(['message' => 'Dish not found'], 404);
         }
     }
+
+
+    /**
+     * Creating a new resource - noauth
+     */
+    public function create_no_auth(Request $request)
+    {
+
+        $dish = Dish::Create([
+            'category' => $request->category,
+            'name' => $request->name,
+            'description' => $request->description,
+            'ingredients' => $request->ingredients,
+            'price' => $request->price,
+        ]);
+
+        if ($dish) {
+            $dish->save();
+            return response()->json(["message" => "Dish Successfully saved.", $dish], 200);
+        } else {
+            return response()->json(["message" => "Dish could not been saved"], 401);
+        }
+    }
+
+     /**
+     * Creating a new resource - noauth
+     */
+    public function update_no_auth(Request $request)
+    {
+
+        $dish = Dish::Create([
+            'category' => $request->category,
+            'name' => $request->name,
+            'description' => $request->description,
+            'ingredients' => $request->ingredients,
+            'price' => $request->price,
+        ]);
+
+        if ($dish) {
+            $dish->update();
+            return response()->json(["message" => "Dish Successfully updates.", $dish], 200);
+        } else {
+            return response()->json(["message" => "Dish could not been updated"], 401);
+        }
+
+    }
 }
 
