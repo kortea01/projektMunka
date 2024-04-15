@@ -42,15 +42,16 @@ namespace RestaurantDesktopApp
 
     public partial class RestaurantMenu
     {
-        public static RestaurantMenu[] FromJson(string json) => JsonConvert.DeserializeObject<RestaurantMenu[]>(json, RestaurantDesktopApp.Converter.Settings);
+        public static RestaurantMenu[] FromJson(string json) => JsonConvert.DeserializeObject<RestaurantMenu[]>(json, RestaurantDesktopApp.ConverterRestMenu.Settings);
     }
-
+    /*
     public static class Serialize
     {
         public static string ToJson(this RestaurantMenu[] self) => JsonConvert.SerializeObject(self, RestaurantDesktopApp.Converter.Settings);
     }
-
-    internal static class Converter
+    */
+    
+    internal static class ConverterRestMenu
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
@@ -62,6 +63,7 @@ namespace RestaurantDesktopApp
             },
         };
     }
+    
 
     internal class DecodeArrayConverter : JsonConverter
     {

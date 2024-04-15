@@ -1,29 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System;
 using System.Configuration;
-using RestaurantDesktopApp;
-using Newtonsoft.Json;
-using System.IO;
-using System.Globalization;
+using System.Net.Http;
+using System.Windows.Forms;
 
 
 
 namespace RestaurantDesktopApp
 {
-    public partial class Form2 : Form
+    public partial class RestaurantMenuForm : Form
     {
         HttpClient client = new HttpClient();
-        string endPoint = ReadSettings("endpointUrl");
-
-        
+        string endPoint = ReadSettings("endpointUrlMenu");        
 
         private static string ReadSettings(string keyName)
         {
@@ -32,6 +19,7 @@ namespace RestaurantDesktopApp
             {
                 //var value = ConfigurationSettings.AppSettings;
                 var value = System.Configuration.ConfigurationSettings.AppSettings;
+               
 
                 result = value[keyName];
             }
@@ -41,7 +29,7 @@ namespace RestaurantDesktopApp
             return result;
         }
 
-        public Form2()
+        public RestaurantMenuForm()
         {
             InitializeComponent();
         }
@@ -116,6 +104,21 @@ namespace RestaurantDesktopApp
             textBox_Description.Text = restaurantMenu.Description.ToString();
             //ingerdientsCombo.Items.Add(restaurantMenu.Ingredients.ToString());
             numericUpDownPrice.Value = restaurantMenu.Price;            
+        }
+
+        private void ingerdientsCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Create_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Read_Click(object sender, EventArgs e)
+        {
+            refreshMenu();
         }
     }
 }

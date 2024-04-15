@@ -1,6 +1,6 @@
 ﻿namespace RestaurantDesktopApp
 {
-    partial class Form2
+    partial class RestaurantMenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -65,6 +65,7 @@
             this.OrderID.Name = "OrderID";
             this.OrderID.Size = new System.Drawing.Size(265, 22);
             this.OrderID.TabIndex = 1;
+            this.OrderID.Text = "1";
             // 
             // label2
             // 
@@ -150,6 +151,7 @@
             this.ingerdientsCombo.Name = "ingerdientsCombo";
             this.ingerdientsCombo.Size = new System.Drawing.Size(265, 24);
             this.ingerdientsCombo.TabIndex = 9;
+            this.ingerdientsCombo.SelectedIndexChanged += new System.EventHandler(this.ingerdientsCombo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -239,7 +241,7 @@
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // FormRestaurantMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,8 +264,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.OrderID);
             this.Controls.Add(this.label1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "FormRestaurantMenu";
+            this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).EndInit();
             this.ResumeLayout(false);
