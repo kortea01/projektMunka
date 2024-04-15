@@ -24,24 +24,12 @@ return(
 		</div>
 	</header>
     <div className='navbarpic'></div>
-    <div>
+    <div className='contentWrapper'>
         <Outlet />
     </div>
     </div>
 )
-//
-//    return (
-//    <div className='main_wrapper'>
-//        <div className='menu_container'>
-//            <div className='logo'>MyLoGo</div>
-//            <Navbar/>
-//        </div>
-//        <div className='main_container'>
-//        <main>
-//            <Outlet />
-//        </main>
-//        </div>
-//    </div>);
-}
+
+};
 
 export default Layout;
