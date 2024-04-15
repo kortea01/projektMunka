@@ -1,11 +1,14 @@
 import { useRef } from "react";
+import React from 'react';
 import PropTypes from "prop-types";
+import { useNavigate } from 'react-router-dom';
 
 
 function LoginPage(props) {
     // Your code for the login form goes here
 
     const {onSubmit} = props;
+    const navigate = useNavigate();
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
@@ -31,6 +34,7 @@ function LoginPage(props) {
         </div>
 
             <button type="submit">Belépés</button>
+            <button type="button" onClick={() => navigate('/register')}>Regisztráció</button>
     </form>);
 }
 

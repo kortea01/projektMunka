@@ -131,11 +131,11 @@ function App() {
       },
       {
         path: "/user-profile",
-        element: <UserProfile  user={userData} />,
+        element: <UserProfile  user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere} />,
       },
       {
         path: "/register",
-        element: <RegisterPage user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>,
+        element: <RegisterPage user={userData} />,
       },
       {
         path: "/login",

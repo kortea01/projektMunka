@@ -52,44 +52,58 @@ function RegisterPage() {
         
     }
 
-    return ( <form onSubmit={handleFormSubmit}>
-        <div>
-            <label htmlFor="last_name">Vezetéknév:</label>
-            <input type="text" id="last_name" placeholder="Teszt" ref={lastNameRef}/>
-        </div>
-        <div>
-            <label htmlFor="first_name">Keresztnév:</label>
-            <input type="text" id="first_name" placeholder="Elek" ref={firstNameRef}/>
-        </div>
-        <div>
-            <label htmlFor="phone">Telefonszám:</label>
-            <input type="text" id="phone" placeholder="+36305004020" ref={phoneRef}/>
-        </div>
-        <div>
-            <label htmlFor="zip">Irányítószám:</label>
-            <input type="text" id="zip" placeholder="1094" ref={zipRef}/>
-        </div>
-        <div>
-            <label htmlFor="city">Város:</label>
-            <input type="text" id="city" placeholder="Budapest" ref={cityRef}/>
-        </div>
-        <div>
-            <label htmlFor="address">Cím:</label>
-            <input type="text" id="address" placeholder="Mester utca 15" ref={addressRef}/>
-        </div>
+    return ( 
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content text-center">
+                    <div class="home_subtitle page_subtitle">Ha még nincs profilja</div>
+                    <div class="home_title"><h1>Regisztráció</h1></div>
+                    <div class="home_text ml-auto mr-auto">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+                        <form onSubmit={handleFormSubmit}>
+                        <div>
+                            <label htmlFor="last_name">Vezetéknév:</label>
+                            <input type="text" id="last_name" placeholder="Teszt" ref={lastNameRef}/>
+                        </div>
+                        <div>
+                            <label htmlFor="first_name">Keresztnév:</label>
+                            <input type="text" id="first_name" placeholder="Elek" ref={firstNameRef}/>
+                        </div>
+                        <div>
+                            <label htmlFor="phone">Telefonszám:</label>
+                            <input type="text" id="phone" placeholder="+36305004020" ref={phoneRef}/>
+                        </div>
+                        <div>
+                            <label htmlFor="zip">Irányítószám:</label>
+                            <input type="text" id="zip" placeholder="1094" ref={zipRef}/>
+                        </div>
+                        <div>
+                            <label htmlFor="city">Város:</label>
+                            <input type="text" id="city" placeholder="Budapest" ref={cityRef}/>
+                        </div>
+                        <div>
+                            <label htmlFor="address">Cím:</label>
+                            <input type="text" id="address" placeholder="Mester utca 15" ref={addressRef}/>
+                        </div>
+
+                        <div>
+                            <label htmlFor="email">E-mail:</label>
+                            <input type="email" id="email" placeholder="tesztelek@tesztelek.hu" ref={emailRef}/>
+                        </div>
+                        <div>
+                            <label htmlFor="password">Jelszó:</label>
+                            <input type="password" id="password" placeholder="tesztElek88" ref={passwordRef} />
+                        </div>
         
-        <div>
-            <label htmlFor="email">E-mail:</label>
-            <input type="email" id="email" placeholder="tesztelek@tesztelek.hu" ref={emailRef}/>
+                            <button type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label htmlFor="password">Jelszó:</label>
-            <input type="password" id="password" placeholder="tesztElek88" ref={passwordRef} />
-        </div>
-        
-        <button type="submit">Register</button>
-    </form>
-        
+    </div>
     );
 }
 
