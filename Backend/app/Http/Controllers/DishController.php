@@ -148,22 +148,19 @@ class DishController extends Controller
      /**
      * Creating a new resource - noauth
      */
-    public function update_no_auth(Request $request)
+    public function update_no_auth(Request $request, $id)
     {
-
-        $dish = Dish::Create([
-            'category' => $request->category,
-            'name' => $request->name,
-            'description' => $request->description,
-            'ingredients' => $request->ingredients,
-            'price' => $request->price,
-        ]);
-
+        $dish = Dish::findOrFail($id);
         if ($dish) {
-            $dish->update();
+            $dish->category =   $request->category;
+            $dish->name = $request->name;
+            $dish->description = $request->description;
+            $dish->ingredients = $request->ingredients;
+            $dish->price = $request->price;
+            $dish->save();
             return response()->json(["message" => "Dish Successfully updates.", $dish], 200);
         } else {
-            return response()->json(["message" => "Dish could not been updated"], 401);
+            return response()->json(["message" => "Dish notfound"], 401);
         }
 
     }
