@@ -70,7 +70,7 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        $ingredient = Ingredient::find($id);
+        $ingredient = Ingredient::findOrFail($id);
         if ($ingredient) {
             $ingredient->delete();
             return response()->json(['message' => 'Ingredient deleted successfully'], 200);
@@ -89,9 +89,24 @@ class IngredientController extends Controller
 
         if ($ingredient) {
             $ingredient->save();
-            return response()->json(["message" => "Ingerdient Successfully saved.", $ingredient], 200);
+            return response()->json(["message" => "Ingerdient successfully saved.", $ingredient], 200);
         } else {
             return response()->json(["message" => "Ingerdient could not been saved"], 401);
         }
     }
+
+    public function update_no_auth(Request $request, $id)
+    {
+        $ingredient = Ingredient::findOrFail($id);
+        if ($ingredient) {
+            $ingredient->name =   $request->name;
+            $ingredient->allergen = $request->allergen;
+            $ingredient->in_stock = $request->in_stock;
+            $ingredient->save();
+            return response()->json(["message" => "Ingredient successfully updates.", $ingredient], 200);
+        } else {
+            return response()->json(["message" => "Ingredient not found"], 401);
+        }
+    }
 }
+

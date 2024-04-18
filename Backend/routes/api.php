@@ -36,8 +36,11 @@ Route::put('menu-all/{id}', 'App\Http\Controllers\DishController@update_no_auth'
 Route::get('ingredients', 'App\Http\Controllers\IngredientController@index');                                   // ok
 Route::get('ingredients-all', 'App\Http\Controllers\IngredientController@listAll');                             // ok
 Route::get('ingredients/{id}', 'App\Http\Controllers\IngredientController@show')->where('id', '[0-9]+');        // ok
-Route::post('ingredients-all', 'App\Http\Controllers\IngredientController@create_no_auth');
 Route::delete('ingredients-all/{id}', 'App\Http\Controllers\IngredientController@destroy')->where('id', '[0-9]+'); // ok
+Route::post('ingredients-all', 'App\Http\Controllers\IngredientController@create_no_auth'); //ok
+Route::put('ingredients-all/{id}', 'App\Http\Controllers\IngredientController@update_no_auth')->where('id', '[0-9]+'); //???
+
+
 
 # protected endpoints
 Route::middleware('auth:sanctum')->group(function () {
