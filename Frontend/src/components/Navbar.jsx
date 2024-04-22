@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function SideMenu() {
+function Navbar() {
     return (
 	<nav class="main_nav">
         <ul class="d-flex flex-row align-items-center justify-content-start">
@@ -12,10 +12,11 @@ function SideMenu() {
             <li><Link to="/...">Menü</Link></li>
             <li><Link to="/...">Kapcsolat</Link></li>
             <li><Link to="/login">Bejelentkezés</Link></li>
+            <li><Link to="/user-profile">Profil</Link></li>
 
         </ul>
     </nav>
     );
 }
 
-export default SideMenu;
+export default Navbar;
