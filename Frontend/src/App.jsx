@@ -95,6 +95,7 @@ function App() {
     if (response.ok) {
       localStorage.removeItem('token');
       setToken('');
+      router.navigate('/');
       alert("Sikeres kijelentkezés!");
     } else {
       const data = await response.json();
@@ -114,6 +115,7 @@ function App() {
     if (response.ok) {
       localStorage.removeItem('token');
       setToken('');
+      router.navigate('/');
       alert("Sikeres kijelentkezés!");
     } else {
       const data = await response.json();
