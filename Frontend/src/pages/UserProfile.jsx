@@ -6,7 +6,7 @@ function UserProfile(props) {
     // displayed when user is logged in
 
     return (<div>
-        <p>Bejelentkezve: {user.last_name} {user.first_name}</p>
+        <p>Bejelentkezve: {user.first_name}</p>
         <button type="button" onClick={() => logoutClick()}>Kijelentkezés</button>
         <button type="button" onClick={() => logoutEverywhereClick()}>Kijelentkezés mindenhonnan</button>
     </div>);

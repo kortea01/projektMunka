@@ -3,6 +3,7 @@ import './App.css';
 import UserProfile from './pages/UserProfile';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import AboutUs from './pages/AboutUs';
 import { useEffect, useState } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
@@ -77,6 +78,7 @@ function App() {
       localStorage.setItem('token', token);
       console.log(token);
       loadUserData();
+      //router.navigate('/user-profile');
       alert("Sikeres belépés!");
     } else {
       alert(data.message);
@@ -130,6 +132,10 @@ function App() {
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
       {
         path: "/user-profile",
