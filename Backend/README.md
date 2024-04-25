@@ -10,6 +10,8 @@ init the composer project
 localize: 
 create a `.env` file with database credentials :
 
+** ADMIN_EMAIL is important a default administrator will be seeded with this email address and the password 'Passw0rd'
+
 ```
 ...
 APP_NAME=BellaItalia
@@ -33,4 +35,4 @@ DB_PASSWORD=Passw0rd
 ...
 ```
 
-`php artisan migrate:fresh`
+`php artisan migrate:fresh --seed`
