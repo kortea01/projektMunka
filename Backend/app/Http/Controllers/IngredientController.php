@@ -6,6 +6,8 @@ use App\Http\Requests\StoreIngredientRequest;
 use App\Http\Requests\UpdateIngredientRequest;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class IngredientController extends Controller
 {
@@ -26,9 +28,19 @@ class IngredientController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(StoreIngredientRequest $request)
     {
-        //
+        $user = Auth::user(); 
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $ingredient = Ingredient::create([
+                'name' =>       $request->name,
+                'allergen' =>   $request->allergen,
+                'in_stock'  =>  $request->in_stock
+            ]);
+            return response()->json(["message" => "Ingredient Successfully created.", $ingredient], 201);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
     }
 
     /**
@@ -36,7 +48,7 @@ class IngredientController extends Controller
      */
     public function store(StoreIngredientRequest $request)
     {
-        //
+        // ... using create instead
     }
 
     /**
@@ -54,21 +66,43 @@ class IngredientController extends Controller
      */
     public function edit(Ingredient $ingredient)
     {
-        //
-    }
+        // using update instead
+    } 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateIngredientRequest $request, Ingredient $ingredient)
+    public function update(UpdateIngredientRequest $request, $id)
     {
-        //
-    }
+        $user = Auth::user(); 
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $target = Ingredient::findOrFail($id);
+            $target->update($request->all());
+            return response()->json(["message" => "Ingredient Successfully updated.", $target], 201);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
+        //return response()->json("dafuq");
 
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
+    {
+        $user = Auth::user(); 
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $target = Ingredient::findOrFail($id);
+            $target->delete();
+            return response()->json(["message" => "Ingredient Successfully deleted."], 200);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy_no_auth($id)
     {
         $ingredient = Ingredient::findOrFail($id);
         if ($ingredient) {

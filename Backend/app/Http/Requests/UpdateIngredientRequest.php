@@ -11,7 +11,7 @@ class UpdateIngredientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // auth login is in userController instead
     }
 
     /**
@@ -23,6 +23,10 @@ class UpdateIngredientRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required', 'string', 'max:255'],
+            'allergen' => ['nullable', 'json'],
+            'in_stock' => ['required', 'numeric']
+            
         ];
     }
 }

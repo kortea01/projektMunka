@@ -11,7 +11,7 @@ class UpdateDishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class UpdateDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',	
+            'category' => 'required|string|in:soup,salad,pizza,pasta,dessert,drinks,risotto',
+            'description' => 'required|string|max:255',
+            'img_url' => 'nullable|string|max:255',	
+            'ingredients' => 'required|array',
+            'price' => 'required|numeric|min:0'
         ];
     }
 }

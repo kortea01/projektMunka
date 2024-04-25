@@ -36,7 +36,7 @@ class DishController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create(StoreDishRequest $request)
     {
         $user = Auth::user();
         if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
@@ -49,7 +49,7 @@ class DishController extends Controller
                 'price' => $request->price,
             ]);
             $dish->save(); // kell ez ide?
-            return response()->json(["message" => "Dish Successfully updated.",$dish], 200);
+            return response()->json(["message" => "Dish Successfully created.",$dish], 200);
         } else {
             return response()->json(["message" => "Unauthorized"], 401);
         }
@@ -72,7 +72,7 @@ class DishController extends Controller
                 'price' => $request->price,
             ]);
             $dish->save(); // kell ez ide ? omst akkor store vagy create ?
-            return response()->json(["message" => "Dish Successfully updated.",$dish], 200);
+            return response()->json(["message" => "Dish Successfully created.",$dish], 200);
         } else {
             return response()->json(["message" => "Unauthorized"], 401);
         }
@@ -96,21 +96,48 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        // using update instead
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDishRequest $request, Dish $dish)
+    public function update(UpdateDishRequest $request, $id)
     {
-        //
+        $user = Auth::user();
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $dish = Dish::findOrFail($id);
+            $dish->category = $request->category;
+            $dish->name = $request->name;
+            $dish->description = $request->description;
+            $dish->img_url = $request->image;
+            $dish->ingredients = $request->ingredients;
+            $dish->price = $request->price;
+            $dish->save();
+            return response()->json(["message" => "Dish Successfully updated.",$dish], 200);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $user = Auth::user();
+        if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
+            $target = Dish::findOrFail($id);
+            $target->delete();
+            return response()->json(["message" => "Dish Successfully deleted."], 200);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy_no_auth($id)
     {
         $dish = Dish::find($id);
 

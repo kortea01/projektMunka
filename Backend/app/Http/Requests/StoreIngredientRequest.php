@@ -11,7 +11,7 @@ class StoreIngredientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,10 @@ class StoreIngredientRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required', 'string', 'max:255'],
+            'allergen' => ['nullable', 'json'],
+            'in_stock' => ['required', 'numeric']
+            
         ];
     }
 }

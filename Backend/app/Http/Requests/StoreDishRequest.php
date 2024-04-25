@@ -11,7 +11,7 @@ class StoreDishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,8 @@ class StoreDishRequest extends FormRequest
             'name' => 'required|string|max:255',	
             'category' => 'required|string|in:soup,salad,pizza,pasta,dessert,drinks,risotto',
             'description' => 'required|string|max:255',
-            'img_url' => 'required|string|max:255',	
-            'ingredients' => 'required|json',
+            'img_url' => 'nullable|string|max:255',	
+            'ingredients' => 'required|array',
             'price' => 'required|numeric|min:0'
         ];
         
