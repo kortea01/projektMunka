@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-	<nav class="main_nav">
-        <ul class="d-flex flex-row align-items-center justify-content-start">
+	<nav className="main_nav">
+        <ul className="d-flex flex-row align-items-center justify-content-start">
             <li><Link to="/">Főoldal</Link></li>
             <li><Link to="/about-us">Rólunk</Link></li>
             <li><Link to="/...">Menü</Link></li>
