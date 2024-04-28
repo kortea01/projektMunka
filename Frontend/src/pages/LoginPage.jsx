@@ -26,27 +26,29 @@ function LoginPage(props) {
     }
 
     return (
-    <div className="loginWrapper">
-    <form style={{marginTop: "10px", marginBottom: "10px"}} onSubmit={handleFormSubmit}>
-        <h1>Belépés</h1>
-        <div className="input-box">
-            <label htmlFor="loginEmail">E-mail:</label>
-            <input type="email" id="loginEmail" placeholder="E-mail" ref={emailRef} />
-            <FaUser className="icon"/>
+    <div className="container">
+        <div className="loginWrapper">
+            <form style={{marginTop: "10px", marginBottom: "10px"}} onSubmit={handleFormSubmit}>
+                <h1>Belépés</h1>
+                <div className="input-box">
+                    <label htmlFor="loginEmail">E-mail:</label>
+                    <input type="email" id="loginEmail" placeholder="E-mail" ref={emailRef} />
+                    <FaUser className="icon"/>
+                </div>
+                <div className="input-box">
+                    <label htmlFor="loginPassword">Jelszó:</label>
+                    <input type="password" id="loginPassword" placeholder="Jelszó" ref={passwordRef}/>
+                    <FaLock className="icon" />
+                </div>
+                <div className="remember-forgot">
+                    <label><input type="checkbox" />Emlékezz rám</label>
+                    <a href="#">Elfelejtettem a jelszavam</a>
+                </div>
+            
+                    <button type="submit">Belépés</button>
+                    <button type="button" onClick={() => navigate('/register')}>Regisztráció</button>
+            </form>
         </div>
-        <div className="input-box">
-            <label htmlFor="loginPassword">Jelszó:</label>
-            <input type="password" id="loginPassword" placeholder="Jelszó" ref={passwordRef}/>
-            <FaLock className="icon" />
-        </div>
-        <div className="remember-forgot">
-            <label><input type="checkbox" />Emlékezz rám</label>
-            <a href="#">Elfelejtettem a jelszavam</a>
-        </div>
-
-            <button type="submit">Belépés</button>
-            <button type="button" onClick={() => navigate('/register')}>Regisztráció</button>
-    </form>
     </div>
     );
 }
