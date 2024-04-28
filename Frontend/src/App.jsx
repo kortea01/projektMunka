@@ -55,7 +55,11 @@ function App() {
     }
   }, [token]);
 
-
+  window.addEventListener('scroll', function() {
+    var dynamic = document.querySelector('.navbarpic');
+    var newHeight = Math.max(100, 350 - window.scrollY);
+    dynamic.style.height = newHeight + 'px';
+  });
 
   const login = async formData => {
     const url = apiUrl + "/login";
@@ -155,11 +159,11 @@ function App() {
   // redirect user based on state
   return (
 
-    <div className='wrapper'>
+    //<div className='wrapper'>
 
       <RouterProvider router={router} />
 
-    </div>
+    //</div>
   );
   //  // redirect user based on state
   //  return (

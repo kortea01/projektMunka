@@ -2,10 +2,24 @@ import React from 'react';
 
 function AboutUs() {
     return (
-        <div className="about">
-		<div className="container">
-			<div className="row">
-				<div className="col">
+        <div className="aboutWrapper">
+		<div className="aboutContainer">
+					<div className="row aboutRow">
+						<div className="col-xl-4 col-md-6">
+							<img className="aboutpic" src="./images/artdarkchef.jpg" alt="dddf" />
+						</div>
+						<div className="col-xl-4 col-md-6">
+							<img className='aboutpic' src="./images/groupchefs.jpg" alt="img" />
+						</div>
+                    </div>
+                    <div className="row aboutRow">
+                        <div className="col-xl-4 col-md-6">
+							<img className='aboutpic' src="./images/twochef.jpg" alt="img" />
+						</div>
+                        <div className="col-xl-4 col-md-6">
+							<img className='aboutpic' src="./images/winechef.jpg" alt="img" />
+						</div>                       
+					</div>
 					<div className="about_content">
 						<div className="about_subtitle page_subtitle"><h1 className='abouth1'>Benvenuti al BellaItalia!</h1></div>
 						<div className="about_title"></div>
@@ -23,24 +37,6 @@ function AboutUs() {
                                 Összességében, mi, a Dutti család, szeretettel várjuk Önöket, hogy megoszthassuk az ízek és hagyományok varázsát a BellaItalia étteremben. <b>Buon appetito!</b></p>
 						</div>
 					</div>
-					<div className="row">
-						<div className="col-xl-4 col-md-6">
-							<img className="aboutpic" src="./images/artdarkchef.jpg" alt="dddf" />
-						</div>
-						<div className="col-xl-4 col-md-6">
-							<img className='aboutpic' src="./images/groupchefs.jpg" alt="img" />
-						</div>
-                        </div>
-                        <div className="row">
-                        <div className="col-xl-4 col-md-6">
-							<img className='aboutpic' src="./images/twochef.jpg" alt="img" />
-						</div>
-                        <div className="col-xl-4 col-md-6">
-							<img className='aboutpic' src="./images/winechef.jpg" alt="img" />
-						</div>                       
-					</div>
-				</div>	
-			</div>
 		</div>
 	</div>
     );

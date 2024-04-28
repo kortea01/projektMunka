@@ -26,8 +26,8 @@ function LoginPage(props) {
     }
 
     return (
-    <div className="container">
         <div className="loginWrapper">
+        <div className="loginContainer">
             <form style={{marginTop: "10px", marginBottom: "10px"}} onSubmit={handleFormSubmit}>
                 <h1>Belépés</h1>
                 <div className="input-box">
@@ -50,6 +50,7 @@ function LoginPage(props) {
             </form>
         </div>
     </div>
+ 
     );
 }
 

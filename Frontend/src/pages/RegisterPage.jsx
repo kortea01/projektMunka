@@ -53,16 +53,11 @@ function RegisterPage() {
     }
 
     return ( 
-    
+        
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="home_content text-center">
-                    <div class="home_subtitle page_subtitle">Ha még nincs profilja</div>
-                    <div class="home_title"><h1>Regisztráció</h1></div>
-                    <div class="home_text ml-auto mr-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-                        <form onSubmit={handleFormSubmit}>
+        <div className="registerWrapper">
+                        <h2>Regisztráció</h2>
+                        <form style={{marginTop: "10px", marginBottom: "10px"}} onSubmit={handleFormSubmit}>
                         <div>
                             <label htmlFor="last_name">Vezetéknév:</label>
                             <input type="text" id="last_name" placeholder="Teszt" ref={lastNameRef}/>
@@ -101,9 +96,6 @@ function RegisterPage() {
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
     );
 }
 

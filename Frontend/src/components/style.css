@@ -8,57 +8,29 @@
 	src: url(../font/edwardian_script_itc.ttf) format('truetype'),
 	url(../font/edwardian_script_itc.otf) format('opentype');
 }
+html, body {
+	height: 100%;
+}
 
-body #wrapper #root {
+body, #wrapper, #root {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     margin: auto;
     padding: 0;
+	position: static;
 }
 .contentWrapper {
+	position:absolute;
 	width: 100%;
 	height: 100%;
 	padding: 0; ;
-	display: flex;
 	justify-content: center;
 	align-items: center;
+	top: 350px;
 }
 /* CSS Document */
-
-/******************************
-
-[Table of Contents]
-
-0. Custom
-1. Fonts
-2. Body and some general stuff
-3. Header
-4. Login
-
-
-
-******************************/
-/**************** 
-0. CUSTOM 
-****************/
-
-.navbarpic {
-	background-image: url('./images/pastawithbackground2.jpg');
-	width: 100%;
-	background-position: top 70% center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 350px;
-}
-
-
-
-
-/*********************************
-2. Body and some general stuff
-*********************************/
 
 *
 {
@@ -73,7 +45,11 @@ body
 	font-family: 'PT Sans Narrow', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
-	background: #333;
+	background: linear-gradient(149deg, rgba(28,28,28,1) 0%, rgba(45,39,39,1) 40%, rgb(64, 64, 64) 100%);
+	
+	background-image: url(data:image/png;base64,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);
+	background-attachment: fixed;
+	background-color: rgb(28,28,28);
 	color: #a5a5a5;
 	width: 100%;
 	height:100%;
@@ -336,6 +312,17 @@ section
 /*********************************
 3. Header
 *********************************/
+.navbarpic {
+	background-image: url('./images/pastawithbackground2.jpg');
+	width: 100%;
+	background-position: top 70% center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 350px;
+	top: 0px;
+	position: sticky;
+	z-index: 2;
+}
 
 .header
 {
@@ -451,14 +438,18 @@ section
 4. LoginPage
 *********************************/
 
-.loginWrapper {
-	background-image: url('./images/pastawithbackground1.jpg');
+
+
+.loginContainer
+{
+	height: 100%;
 	background-position: top 70% center;
 	background-size: cover;
 	justify-content: center;
 	align-items: center;
 }
-.loginWrapper > form {
+
+.loginContainer > form {
 	padding: 20px;
 	text-align: center;
 	width: 400px;
@@ -471,20 +462,20 @@ section
 	backdrop-filter: blur(2px); /* Add backdrop filter for blurring */
 	background-color: rgba(0, 0, 0, 0.3);
 }
-.loginWrapper input, .loginWrapper button{
+.loginContainer input, .loginContainer button{
 	padding: 6px;
 	border-radius: 10px; /* Add rounded border */
 	border: 2px solid white;
 	background-color: rgba(255,255,255, 0.0);
 }
-.loginWrapper input:hover, .loginWrapper button:hover{
+.loginContainer input:hover, .loginContainer button:hover{
 	padding: 6px;
 	border-radius: 10px; /* Add rounded border */
 	border: 2px solid white;
 	background-color: rgba(255, 255, 255, 0.4);
 	transition: background-color 0.3s ease; /* Add fade effect */
 }
-.loginWrapper * {
+.loginContainer * {
 	color: rgb(255, 255, 255);
 	text-align: center;
 	margin: 5px;
@@ -493,7 +484,15 @@ section
 	align-items: center;
 	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
-
+.loginWrapper {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+}
 /*********************************
 5. Home
 *********************************/
@@ -539,42 +538,75 @@ section
 6. Intro
 *********************************/
 
-.intro
-{
+.introWrapper {
 	width: 100%;
-	background: #FFFFFF;
-	padding-top: 102px;
-	padding-bottom: 102px;
+	padding: auto;
+	height: 100%;
+	padding: 0;
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
 
 }
+.introContainer
+{
+	margin: auto;
+	height: 100%;
+	width: 100%;
+	padding: 5px 75px;
+	max-width: 1785px;
+	align-items: center;
+	background-color: #F7F7F7;
+	/*
+	background: #222222;
+	padding-top: 102px;
+	#padding-bottom: 102px;
+	*/
+}
+
 .welcomepic
 {
 	width: 460px;
 	height: 640px;
-	padding: 20px;
+	padding: 45px 20px 30px;
+	/*margin: -30px;*/
 	object-fit: cover;
 	object-position: center;
 }
+
+.introp {
+	font-size: 18px;
+	text-align: justify;
+}
+
+.introRow {
+	max-width: 1320px;
+}
+
 .intro_content
 {
 	position: absolute;
-	top: 50%;
+	/*
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-	right: -165px;
-	width: 679px;
-	background: #FFFFFF;
-	border: solid 2px #b49383;
+	*/
+	right: 10%;
+	top: 75px;
+	width: 680px;
+	background: rgba(254, 254, 254, 1);
+	border: solid 2px #ffffff;
 	box-shadow: 0px 45px 70px rgba(0,0,0,0.24);
 	z-index: 1;
 	padding-top: 55px;
-	padding-bottom: 59px;
+	padding-bottom: 60px;
 	padding-left: 70px;
 	padding-right: 50px;
 }
+
 .intro_subtitle
 {
 	font-size: 36px;
@@ -592,16 +624,38 @@ section
 	margin-top: 32px;
 }
 
+.introh1 {
+	color: #c49a8f;
+}
+
 /*********************************
 7. About
 *********************************/
-.about
-{
+.aboutWrapper {
 	width: 100%;
+	padding: auto;
+	height: 100%;
+	padding: 0;
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+
+}
+.aboutContainer
+{
+	margin: auto;
+	height: 100%;
+	width: 100%;
+	padding: 5px 75px;
+	max-width: 1785px;
+	align-items: center;
+
+	/*
 	background: #222222;
 	padding-top: 102px;
-	padding-bottom: 102px;
-
+	#padding-bottom: 102px;
+	*/
 }
 
 .aboutpic
@@ -609,7 +663,7 @@ section
 	width: 460px;
 	height: 640px;
 	padding: 45px 20px 30px;
-	margin: -30px;
+	/*margin: -30px;*/
 	object-fit: cover;
 	object-position: center;
 }
@@ -619,23 +673,29 @@ section
 	text-align: justify;
 }
 
+.aboutRow {
+	max-width: 1320px;
+}
+
 .about_content
 {
 	position: absolute;
-	top: 50%;
+	/*
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-	right: -130px;
-	width: 679px;
-	background: rgba(219, 219, 219, 0.8);
+	*/
+	right: 10%;
+	top: 75px;
+	width: 680px;
+	background: rgba(254,254,254,0.8);
 	border: solid 2px #ffffff;
 	box-shadow: 0px 45px 70px rgba(0,0,0,0.24);
 	z-index: 1;
 	padding-top: 55px;
-	padding-bottom: 59px;
+	padding-bottom: 60px;
 	padding-left: 70px;
 	padding-right: 50px;
 }
@@ -733,6 +793,10 @@ section
 	color: #ffffff;
 }
 
+
+/*********************************
+9. Register
+*********************************/
 
 
 
