@@ -54,8 +54,8 @@ function RegisterPage() {
 
     return ( 
         
-    <div class="container">
         <div className="registerWrapper">
+            <div class="registerContainer">
                         <h2>Regisztráció</h2>
                         <form style={{marginTop: "10px", marginBottom: "10px"}} onSubmit={handleFormSubmit}>
                         <div>

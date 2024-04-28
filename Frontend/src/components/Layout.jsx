@@ -1,5 +1,5 @@
 import Navbar from './Navbar';
-
+import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 import './style.css';
 
@@ -26,8 +26,10 @@ return(
     <div className='navbarpic'></div>
     <div className='contentWrapper'>
         <Outlet />
+		<Footer/>
+	</div>
     </div>
-    </div>
+		
 )
 
 };

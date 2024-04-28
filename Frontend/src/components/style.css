@@ -24,7 +24,7 @@ body, #wrapper, #root {
 .contentWrapper {
 	position:absolute;
 	width: 100%;
-	height: 100%;
+	min-height: 120%;
 	padding: 0; ;
 	justify-content: center;
 	align-items: center;
@@ -398,6 +398,7 @@ section
 	font-weight: 700;
 	color: #FFFFFF;
 	text-transform: uppercase;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add drop shadow */
 }
 .main_nav ul li a:hover
 {
@@ -442,11 +443,14 @@ section
 
 .loginContainer
 {
+	font-size: 14pt;
 	height: 100%;
+	
 	background-position: top 70% center;
 	background-size: cover;
 	justify-content: center;
 	align-items: center;
+	margin-top: 200px;
 }
 
 .loginContainer > form {
@@ -551,10 +555,10 @@ section
 }
 .introContainer
 {
-	margin: auto;
+	margin: 0px;
 	height: 100%;
 	width: 100%;
-	padding: 5px 75px;
+	padding: 50px 50px;
 	max-width: 1785px;
 	align-items: center;
 	background-color: #F7F7F7;
@@ -725,6 +729,67 @@ section
 8. UseProfile
 *********************************/
 
+.profil
+{
+	font-size: 14pt;
+	height: 100%;
+	background-position: top 70% center;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	margin-top: 120px;
+}
+
+.profil label {
+	width: 30%;
+	text-align: left;
+}
+.profil input {
+	width: 60%;
+}
+
+.profil button {
+	width: 65%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.profil > form {
+	padding: 20px;
+	text-align: center;
+	width: 600px;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	border-radius: 10px; /* Add rounded border */
+	border: 2px solid white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow */
+	backdrop-filter: blur(2px); /* Add backdrop filter for blurring */
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.profil input, .profil button{
+	padding: 6px;
+	border-radius: 10px; /* Add rounded border */
+	border: 2px solid white;
+	background-color: rgba(255,255,255, 0.0);
+}
+.profil input:hover, .profil button:hover{
+	padding: 6px;
+	border-radius: 10px; /* Add rounded border */
+	border: 2px solid white;
+	background-color: rgba(255, 255, 255, 0.4);
+	transition: background-color 0.3s ease; /* Add fade effect */
+}
+.profil * {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	margin: 5px;
+	padding: 3px;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
 .avatar {
 	width: 200px;
 	height: 200px;
@@ -781,13 +846,13 @@ section
   	text-decoration: none;
 }
 
-.data {
+/*.data {
 	background-color: #000000;
 	margin-left: 200px;
 	padding: 1px 16px;
   	height: 1000px;
 
-}
+}*/
 
 .profile h2, .profile p {
 	color: #ffffff;
@@ -797,7 +862,74 @@ section
 /*********************************
 9. Register
 *********************************/
+.registerContainer
+{
+	font-size: 14pt;
+	height: 100%;
+	background-position: top 70% center;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	margin-top: 120px;
+}
+.registerContainer label {
+	width: 30%;
+	text-align: left;
+}
+.registerContainer input {
+	width: 60%;
+}
 
+.registerContainer button {
+	width: 65%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.registerContainer > form {
+	padding: 20px;
+	text-align: center;
+	width: 600px;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	border-radius: 10px; /* Add rounded border */
+	border: 2px solid white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow */
+	backdrop-filter: blur(2px); /* Add backdrop filter for blurring */
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.registerContainer input, .registerContainer button{
+	padding: 6px;
+	border-radius: 10px; /* Add rounded border */
+	border: 2px solid white;
+	background-color: rgba(255,255,255, 0.0);
+}
+.registerContainer input:hover, .registerContainer button:hover{
+	padding: 6px;
+	border-radius: 10px; /* Add rounded border */
+	border: 2px solid white;
+	background-color: rgba(255, 255, 255, 0.4);
+	transition: background-color 0.3s ease; /* Add fade effect */
+}
+.registerContainer * {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	margin: 5px;
+	padding: 3px;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+.registerWrapper {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+}
 
 
 /*********************************
@@ -807,58 +939,15 @@ section
 .footer
 {
 	width: 100%;
+	height: 0%;
 	background: #232323;
-	padding-top: 70px;
-	padding-bottom: 60px;
+	position: absolute;
+	bottom: 0;
+	
 }
-.footer_logo_title
+
+.footer .logo a > div:first-child, .footer .logo a > div:last-child
+
 {
-	font-size: 57px;
-	line-height: 0.75;
-	color: #FFFFFF;
-}
-.footer_logo_subtitle
-{
-	font-size: 19px;
-	text-transform: uppercase;
-	color: #FFFFFF;
-	letter-spacing: 0.680em;
-	line-height: 0.75;
-	margin-top: 17px;
-}
-.copyright
-{
-	font-size: 13px;
-	color: rgba(255,255,255,0.41);
-	line-height: 0.75;
-	margin-top: 22px;
-}
-.footer_about p
-{
-	color: #a5a4a4;
-}
-.footer_contact ul li:not(:last-child)
-{
-	margin-bottom: 15px;
-}
-.footer_contact_title
-{
-	width: 61px;
-	height: 21px;
-	font-size: 16px;
-	color: #FFFFFF;
-	line-height: 21px;
-	background: #c49a8f;
-	padding-left: 8px;
-	margin-right: 11px;
-}
-.footer_contact_text
-{
-	font-size: 16px;
-	color: #FFFFFF;
-	line-height: 21px;
-}
-.footer_contact ul li div:last-child
-{
-	white-space: nowrap;
+	color: #000000;
 }

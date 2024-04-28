@@ -80,8 +80,8 @@ function App() {
       setToken(token);
       // Add the following line to make the token available in other functions
       localStorage.setItem('token', token);
-      console.log(token);
       loadUserData();
+      //console.log(token); 
       //router.navigate('/user-profile');
       alert("Sikeres belépés!");
     } else {
