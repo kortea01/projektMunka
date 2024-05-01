@@ -5,7 +5,7 @@ import { useRef } from 'react';
 
 
 function UserProfile(props) {
-    const { user, logoutEverywhere} = props;
+    const { user, logoutClick } = props;
     const apiUrl = "http://localhost:8000/api" 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -58,15 +58,17 @@ function UserProfile(props) {
     return (
     <div className='container'>
         <div className='sidebar'>
-            <nav className='sidebar'>
+            <nav>
                 <div className='sidebar_header'>
-                    <img className='avatar' src='./images/dinosaur.png' alt='avatar' />
-                    {props.user && <h5>{props.user.last_name}</h5>}{props.user && <h5>{props.user.first_name}</h5>}
+                    <img className='avatar' src='./images/man.png' alt='avatar' />
+                    <div>{props.user && <h5>{props.user.last_name}</h5>}{props.user && <h5>{props.user.first_name}</h5>}</div>
                 <ul className='sidebar_menu'>
                     <li><a href='/user-profile'>Profil</a></li>
                     <li><a href="#rendelesek">Rendelések</a></li>
                 </ul>
-                <div className='center'><button type="button" onClick={() => logoutClick()}>Kijelentkezés</button></div>
+                <div className='center'>
+                    <button type="button" onClick={() => logoutClick()}>Kijelentkezés</button>
+                </div>
                 </div>
             </nav>
         </div>
