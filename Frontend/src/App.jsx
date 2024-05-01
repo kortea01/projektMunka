@@ -4,11 +4,13 @@ import UserProfile from './pages/UserProfile';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import AboutUs from './pages/AboutUs';
+import HomePage from './pages/HomePage';
+import MenuPage from './pages/MenuPage';
 import { useEffect, useState } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
+
 
 
 function App() {
@@ -152,7 +154,11 @@ function App() {
       {
         path: "/login",
         element: <LoginPage onSubmit={login} />,
-      }
+      },
+      {
+        path: "/menu",
+        element: <MenuPage/>,
+      },
     ],
   },
   ]);

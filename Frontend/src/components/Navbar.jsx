@@ -9,7 +9,7 @@ function Navbar() {
         <ul className="d-flex flex-row align-items-center justify-content-start">
             <li><Link to="/">Főoldal</Link></li>
             <li><Link to="/about-us">Rólunk</Link></li>
-            <li><Link to="/...">Menü</Link></li>
+            <li><Link to="/menu">Menü</Link></li>
             <li><Link to="/...">Kapcsolat</Link></li>
             <li><Link to="/login">Bejelentkezés</Link></li>
             <li><Link to="/user-profile">Profil</Link></li>
