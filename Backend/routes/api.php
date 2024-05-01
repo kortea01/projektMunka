@@ -61,13 +61,23 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // TODO!
 
     # menu mgmt
-    Route::post('menu', 'App\Http\Controllers\DishController@create'); // create or store ?             // 
-    Route::put('menu/{id}', 'App\Http\Controllers\DishController@update')->where('id', '[0-9]+');       //
-    Route::delete('menu/{id}', 'App\Http\Controllers\DishController@destroy')->where('id', '[0-9]+');   //
+    Route::post('menu', 'App\Http\Controllers\DishController@create'); // create or store ?             // ok 
+    Route::put('menu/{id}', 'App\Http\Controllers\DishController@update')->where('id', '[0-9]+');       // ok
+    Route::delete('menu/{id}', 'App\Http\Controllers\DishController@destroy')->where('id', '[0-9]+');   // ok
 
     # ingred mgmt
     Route::post('ingredients', 'App\Http\Controllers\IngredientController@create'); // create or store ?            // ok
     Route::put('ingredients/{id}', 'App\Http\Controllers\IngredientController@update')->where('id', '[0-9]+');      // ok
     Route::delete('ingredients/{id}', 'App\Http\Controllers\IngredientController@destroy')->where('id', '[0-9]+');  // ok
+
+    # order mgmt
+    Route::get('orders-all', 'App\Http\Controllers\OrderController@listAll');                          // noauth 
+   
+    Route::get('orders', 'App\Http\Controllers\OrderController@index');                                // todo
+    Route::get('orders/{id}', 'App\Http\Controllers\OrderController@show')->where('id', '[0-9]+');     // todo
+    Route::post('orders', 'App\Http\Controllers\OrderController@create');                               // todo
+    Route::put('orders/{id}', 'App\Http\Controllers\OrderController@update')->where('id', '[0-9]+');   // todo
+    Route::delete('orders/{id}', 'App\Http\Controllers\OrderController@destroy')->where('id', '[0-9]+'); // todo
+
 }
 );
