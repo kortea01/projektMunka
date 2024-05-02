@@ -10,7 +10,7 @@ function Navbar() {
             <li><Link to="/">Főoldal</Link></li>
             <li><Link to="/about-us">Rólunk</Link></li>
             <li><Link to="/menu">Menü</Link></li>
-            <li><Link to="/...">Kapcsolat</Link></li>
+            <li><Link to="/contact">Kapcsolat</Link></li>
             <li><Link to="/login">Bejelentkezés</Link></li>
             <li><Link to="/user-profile">Profil</Link></li>
 

@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import { useEffect, useState } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
+import ContactPage from './pages/ContactPage';
 
 
 
@@ -151,6 +152,10 @@ function App() {
       {
         path: "/register",
         element: <RegisterPage user={userData} />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage/>,
       },
       {
         path: "/login",
