@@ -8,15 +8,6 @@ import { useEffect } from 'react';
 
 function UserProfile(props) {
 
-    useEffect(() => {
-        if (props.user) {
-            // code to run when props.user changes
-        }
-    }, [props.user]);
-
-    if (!props.user) {
-        return null; // or return a loading spinner, or some other placeholder
-      }
     const { user, logoutClick } = props;
     const apiUrl = "http://localhost:8000/api" 
     const emailRef = useRef(null);
@@ -28,19 +19,30 @@ function UserProfile(props) {
     const cityRef = useRef(null);
     const addressRef = useRef(null); 
 
+    useEffect(() => {
+        if (props.user) {
+            // code to run when props.user changes
+        }
+    }, [props.user]);
+
+    if (!props.user) {
+        return null; // or return a loading spinner, or some other placeholder
+      }
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
     
         const updatedUser = {
             id: user.id, // Add the user's id
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
             last_name: lastNameRef.current.value,
             first_name: firstNameRef.current.value,
             phone: phoneRef.current.value,
             zip: zipRef.current.value,
             city: cityRef.current.value,
             address: addressRef.current.value,
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
+            role: "customer"
         };
     
         const response = async userData => {
