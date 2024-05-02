@@ -6,12 +6,12 @@ import './style.css';
 function Layout() {
 return(
     <div id="wrapper">
-	<header class="header">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="header_content d-flex flex-row align-items-center justify-content-start">
-						<div class="logo">
+	<header className="header">
+		<div className="container">
+			<div className="row">
+				<div className="col">
+					<div className="header_content d-flex flex-row align-items-center justify-content-start">
+						<div className="logo">
 							<a href="#">
 								<div>BellaItalia</div>
 								<div>restaurant</div>

@@ -810,17 +810,18 @@ section
 }
 
 .sidebar_header button {
-	padding: 5px 20px;
-	margin-top: 10px;
-	font-size: medium;
+	padding: 8px 30px;
+	margin-top: 20px;
+	font-size: 15pt;
 	border-radius: 10px; /* Add rounded border */
 	border: 2px solid rgb(0, 0, 0);
 	background-color: rgba(255,255,255, 0.0);
 }
 
 .sidebar_menu {
-	margin-top: 20px;
+	margin-top: 25px;
 }
+
 
 .center {
 	margin: auto;
@@ -836,13 +837,23 @@ section
   	position: absolute;
   	height: 100%;
   	overflow: auto;
+	z-index: 1;
 
 }
 
-.sidebar a {
+.username {
+	margin-top: 15px;
+}
+
+.username h4 {
+	text-align: center;
+	
+}
+
+.sidebar li a {
 	display: block;
   	color: black;
-	font-size: 16pt;
+	font-size: 18pt;
   	text-decoration: none;
 }
 

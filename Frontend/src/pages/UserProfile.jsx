@@ -1,10 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useRef } from 'react';
+import { useEffect } from 'react';
+
 
 
 
 function UserProfile(props) {
+
+    useEffect(() => {
+        if (props.user) {
+            // code to run when props.user changes
+        }
+    }, [props.user]);
+
+    if (!props.user) {
+        return null; // or return a loading spinner, or some other placeholder
+      }
     const { user, logoutClick } = props;
     const apiUrl = "http://localhost:8000/api" 
     const emailRef = useRef(null);
@@ -61,7 +73,7 @@ function UserProfile(props) {
             <nav>
                 <div className='sidebar_header'>
                     <img className='avatar' src='./images/man.png' alt='avatar' />
-                    <div>{props.user && <h5>{props.user.last_name}</h5>}{props.user && <h5>{props.user.first_name}</h5>}</div>
+                    <div className='username'><h4>{props.user.last_name} {props.user.first_name}</h4> </div>
                 <ul className='sidebar_menu'>
                     <li><a href='/user-profile'>Profil</a></li>
                     <li><a href="#rendelesek">Rendelések</a></li>
@@ -124,7 +136,7 @@ function UserProfile(props) {
 UserProfile.propTypes = {
     user: PropTypes.object.isRequired,
     logoutClick: PropTypes.func.isRequired,
-    logoutEverywhereClick: PropTypes.func.isRequired
+    //logoutEverywhereClick: PropTypes.func.isRequired
 };
 
 export default UserProfile;

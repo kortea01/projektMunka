@@ -19,6 +19,7 @@ function App() {
   const apiUrl = "http://localhost:8000/api"
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState(null);
+  const [user, setUser] = useState(null);
 
 
 
@@ -171,24 +172,6 @@ function App() {
 
     //</div>
   );
-  //  // redirect user based on state
-  //  return (
-  //  
-  //    <div>
-  //      <RouterProvider router={router} />
-  //      
-  //    <main>
-  //      /*{userData !== null ?
-  //        <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere}/>
-  //        :
-  //        <>    
-  //          <RegisterForm />
-  //          <LoginForm onSubmit={login} />
-  //        </>
-  //      }*/
-  //    </main>
-  //    </div>
-  //  );
 }
 
 export default App;
