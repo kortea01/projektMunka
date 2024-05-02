@@ -92,7 +92,7 @@ function RegisterPage() {
                             <input type="password" id="password" placeholder="tesztElek88" ref={passwordRef} />
                         </div>
         
-                            <button type="submit">Register</button>
+                            <button type="submit">Regisztráció</button>
                         </form>
                     </div>
                 </div>

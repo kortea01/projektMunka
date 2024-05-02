@@ -6,10 +6,11 @@ import LoginPage from './pages/LoginPage';
 import AboutUs from './pages/AboutUs';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
+import Layout from './components/Layout';
 import { useEffect, useState } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
-import Layout from './components/Layout';
+
 
 
 
@@ -19,7 +20,7 @@ function App() {
   const apiUrl = "http://localhost:8000/api"
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState(null);
-  const [user, setUser] = useState(null);
+
 
 
 
@@ -84,8 +85,7 @@ function App() {
       // Add the following line to make the token available in other functions
       localStorage.setItem('token', token);
       loadUserData();
-      //console.log(token); 
-      //router.navigate('/user-profile');
+      router.navigate('/user-profile');
       alert("Sikeres belépés!");
     } else {
       alert(data.message);
