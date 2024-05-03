@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
-
+ 
 function MenuPage() {
     const [dishes, setDishes] = useState([]);
     const [links, setLinks] = useState([]);
