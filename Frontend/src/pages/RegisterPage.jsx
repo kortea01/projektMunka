@@ -22,8 +22,7 @@ function RegisterPage() {
             phone: phoneRef.current.value,
             zip: zipRef.current.value,
             city: cityRef.current.value,
-            address: addressRef.current.value,
-            role: "customer"
+            address: addressRef.current.value
         
         };
         register(newUser);

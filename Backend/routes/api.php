@@ -59,6 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user-all', 'App\Http\Controllers\Api\UserController@listAll');                          // ok
     Route::get('user/{id}', 'App\Http\Controllers\Api\UserController@show')->where('id', '[0-9]+');     // ok
     Route::put('user/{id}', 'App\Http\Controllers\Api\UserController@update')->where('id', '[0-9]+');   // ok
+    Route::delete('user/{id}', 'App\Http\Controllers\Api\UserController@destroy')->where('id', '[0-9]+'); // ok
 
     # menu mgmt
     Route::post('menu', 'App\Http\Controllers\DishController@create'); // create or store ?             // ok 

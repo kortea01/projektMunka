@@ -41,7 +41,7 @@ class StoreUserRequest extends FormRequest
             'city' => 'required|string|max:255',
             'zip' => 'required|int',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8'
         ];
 
         if (auth()->check() && auth()->user()->role === 'admin') {

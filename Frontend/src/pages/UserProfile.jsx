@@ -12,6 +12,7 @@ function UserProfile(props) {
     const apiUrl = "http://localhost:8000/api" 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const confirmPasswordRef = useRef(null);    
     const lastNameRef = useRef(null);
     const firstNameRef = useRef(null);
     const phoneRef = useRef(null);
@@ -32,17 +33,22 @@ function UserProfile(props) {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
     
+        if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+            alert("A jelszavak nem egyeznek!");
+            return;
+        }
+
         const updatedUser = {
             id: user.id, // Add the user's id
             email: emailRef.current.value,
             password: passwordRef.current.value,
+            confirm_password: confirmPasswordRef.current.value,
             last_name: lastNameRef.current.value,
             first_name: firstNameRef.current.value,
             phone: phoneRef.current.value,
             zip: zipRef.current.value,
             city: cityRef.current.value,
-            address: addressRef.current.value,
-            role: "customer"
+            address: addressRef.current.value
         };
     
         const response = async userData => {
@@ -52,7 +58,8 @@ function UserProfile(props) {
                 body: JSON.stringify(userData),
                 headers: {
                     "Accept": "application/json",
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token") // Add the token to the headers
                 }
             });
     
@@ -60,7 +67,7 @@ function UserProfile(props) {
             const data = await response.json();
                 alert("Sikeres mentés!");
             } else {
-                alert("A kérés sikertelen volt.");
+                alert("A kérés sikertelen volt. \r\n" + (await response.json()).message);
             }
     
         };
@@ -120,6 +127,10 @@ function UserProfile(props) {
                     <div>
                         <label htmlFor="password">Jelszó:</label>
                         <input type="password" id="password" ref={passwordRef} />
+                    </div>
+                    <div>
+                        <label htmlFor="confirmPassword">Jelszó megerősítés:</label>
+                        <input type="password" id="confirmPassword" ref={confirmPasswordRef}/>
                     </div>
                     <div>
                         <button type="submit">Mentés</button>

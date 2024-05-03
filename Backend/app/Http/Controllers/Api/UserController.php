@@ -89,10 +89,16 @@ class UserController extends Controller
         //return response()->json("dafuq");
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user, $id)
     {
-        $user->delete();
+        $user = Auth::user();
+        if ($user->tokenCan('admin') || $user->id == $id) {
+            $target = User::findOrFail($id);
+            $target->delete();
+            return response()->json(null, 204);
+        } else {
+            return response()->json(["message" => "Unauthorized"], 401);
+        }
 
-        return response()->json(null, 204);
     }
 }

@@ -16,7 +16,7 @@ class AuthController extends Controller
         $user = User::create([
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
-            "role" => 'customer', // when registering you always become customer
+            //"role" => 'customer', // when registering you always become customer
             "phone" => $request->phone,
             "address" => $request->address,
             "zip" => $request->zip,
