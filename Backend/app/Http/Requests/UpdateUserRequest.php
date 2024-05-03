@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,7 +36,8 @@ class StoreUserRequest extends FormRequest
         if (auth()->check() && auth()->user()->role === 'admin') {
             $rules['role'] = 'required|in:customer,manager,admin';
         } else {
-            $rules['role'] = 'required|in:customer';
+            //$rules['role'] = 'required|in:customer';
+            $rules['role'] = 'customer';
         }
 
         return $rules;

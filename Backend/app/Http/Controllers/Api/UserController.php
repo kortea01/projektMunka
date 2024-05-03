@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 #use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -59,12 +60,28 @@ class UserController extends Controller
         }
     }
 
-    public function update(StoreUserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         $user = Auth::user(); 
         if ($user->tokenCan('admin') || $user->tokenCan('manager')) {
             $target = User::findOrFail($id);
             $target->update($request->all());
+            return response()->json(["message" => "User Successfully updated.", $target], 201);
+        } else if ($user->tokenCan('customer') && $user->id == $id) {
+            $target = User::findOrFail($id);
+            $target->update(
+                [
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    //'email' => $request->email, // unique identifier cant change
+                    //'role' => $request->role, // only admin can change
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'city' => $request->city,
+                    'zip' => $request->zip,
+                    "password" => Hash::make($request->password)
+                ]
+            );
             return response()->json(["message" => "User Successfully updated.", $target], 201);
         } else {
             return response()->json(["message" => "Unauthorized"], 401);

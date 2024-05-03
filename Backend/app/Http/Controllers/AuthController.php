@@ -16,7 +16,7 @@ class AuthController extends Controller
         $user = User::create([
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
-            "role" => $request->role,
+            "role" => 'customer', // when registering you always become customer
             "phone" => $request->phone,
             "address" => $request->address,
             "zip" => $request->zip,
@@ -50,7 +50,8 @@ class AuthController extends Controller
             'message' => 'Succesfull login!',
             'token' => $token,
             'Type' => 'Bearer',
-            'role' => $user->role // include user role in response
+            'role' => $user->role, // include user role in response
+            'id' => $user->id // include user id in response
         ], 200);
     }
 

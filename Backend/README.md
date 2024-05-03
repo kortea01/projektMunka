@@ -36,3 +36,8 @@ DB_PASSWORD=Passw0rd
 ```
 
 `php artisan migrate:fresh --seed`
+
+this will create the db structure as well as creating a default administrator user based on the ADMIN_EMAIL variable in .env
+
+The Example data is in the `/Resources` folder inside repository root in `.sql` format.
+

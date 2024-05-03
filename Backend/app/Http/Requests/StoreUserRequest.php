@@ -47,7 +47,8 @@ class StoreUserRequest extends FormRequest
         if (auth()->check() && auth()->user()->role === 'admin') {
             $rules['role'] = 'required|in:customer,manager,admin';
         } else {
-            $rules['role'] = 'required|in:customer';
+            //$rules['role'] = 'required|in:customer';
+            $rules['role'] = 'customer';
         }
 
         return $rules;
