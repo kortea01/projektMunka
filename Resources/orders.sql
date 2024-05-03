@@ -1,0 +1,5 @@
+INSERT INTO `orders` (`id`, `created_at`, `updated_at`, `user_id`, `order`, `total`, `status`, `payment_method`, `delivery_address`, `delivery_note`) VALUES
+(1, '2024-05-03 16:26:41', '2024-05-03 16:26:41', 2, '[{\"id\":4,\"name\":\"Caprese\",\"quantity\":3,\"price\":\"7.99\",\"total_price\":23.97}]', 23.97, 'pending', 'cash', '1234 Csudapest utca 1.', NULL),
+(2, '2024-05-03 17:50:38', '2024-05-03 17:50:38', 3, '[{\"id\":4,\"name\":\"Caprese\",\"quantity\":3,\"price\":\"7.99\",\"total_price\":23.97},{\"id\":12,\"name\":\"Arrabiata\",\"quantity\":2,\"price\":\"12.99\",\"total_price\":25.98}]', 49.95, 'pending', 'cash', '1094 Budapest Address 12', NULL),
+(3, '2024-05-03 18:10:36', '2024-05-03 18:10:36', 3, '[{\"id\":3,\"name\":\"Zuppa di pomodoro\",\"quantity\":1,\"price\":\"5.49\",\"total_price\":5.49}]', 5.49, 'pending', 'card', '1094 Budapest Address 12', NULL),
+(4, '2024-05-03 18:11:30', '2024-05-03 18:11:30', 3, '[{\"id\":8,\"name\":\"Pepperoni\",\"quantity\":2,\"price\":\"11.99\",\"total_price\":23.98}]', 23.98, 'pending', 'card', '1094 Budapest Address 12', 'hozzad gyorsan éhen halok');

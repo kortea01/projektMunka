@@ -1,0 +1,4 @@
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `address`, `phone`, `city`, `zip`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Bella', 'Italia', '123 Main St', '123-456-7890', 'Anytown', 12345, 'admin@bellaitalia.com', NULL, '$2y$10$r5x.jrTlkr9flQyaGQeVEuWYgvKnKdWLQDul4VCy10bPubUItAgJC', 'admin', NULL, '2024-05-03 16:23:22', '2024-05-03 16:23:22'),
+(2, 'Valami', 'Valaki', 'utca 1.', '123456789', 'Csudapest', 1234, 'valaki@valami.hu', NULL, '$2y$10$NAoLD1p3ROOGloU2FmCCfu1Ur2wQNoOoa6P7lGfGydBI6w3grEr5y', 'customer', NULL, '2024-05-03 16:25:45', '2024-05-03 16:25:45'),
+(3, 'John', 'Doe', 'Address 12', '123456789', 'Budapest', 1094, 'john@doe.com', NULL, '$2y$10$UndHQS8WtWSbUG6LInMfjeIQ1hO6g6Z2lH2JGgVYhjOKcmIsunNXm', 'customer', NULL, '2024-05-03 17:48:54', '2024-05-03 17:48:54');
