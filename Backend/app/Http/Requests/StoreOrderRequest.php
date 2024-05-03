@@ -29,8 +29,12 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             //
-            'items' => 'required|array',
-            'payment_method' => 'required|string',
+            //'items' => 'required|array',
+            'items' => 'required|array|min:1',
+            'items.*' => 'required|array',
+            'items.*.id' => 'required|integer|exists:dishes,id',
+            'items.*.quantity' => 'required|integer|min:1',
+            'payment_method' => 'required|string|in:card,cash',
             'delivery_note' => 'nullable|string'
         ];
     }

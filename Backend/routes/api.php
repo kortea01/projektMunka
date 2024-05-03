@@ -74,7 +74,7 @@ Route::middleware('auth:sanctum')->group(function () {
     # order mgmt
     Route::get('orders-all', 'App\Http\Controllers\OrderController@listAll');                          // noauth 
    
-    Route::get('orders', 'App\Http\Controllers\OrderController@index');                                // todo
+    Route::get('orders', 'App\Http\Controllers\OrderController@index');                                // todo 
     Route::get('orders/{id}', 'App\Http\Controllers\OrderController@show')->where('id', '[0-9]+');     // todo
     Route::post('orders', 'App\Http\Controllers\OrderController@create');                               // todo
     Route::put('orders/{id}', 'App\Http\Controllers\OrderController@update')->where('id', '[0-9]+');   // todo

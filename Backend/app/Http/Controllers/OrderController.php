@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Dish;
 
 class OrderController extends Controller
 {
@@ -23,10 +23,13 @@ class OrderController extends Controller
             return Order::orderBy('created_at')->paginate(50);
         } else {
             return Order::where('user_id', $user->id)->orderBy('created_at')->paginate(50);
+            // $object['items'] = json_decode($object['items']);
+            //return $object;
         }
     }
     public function listAll ()
     {
+        // no auth endpoint 
         return Order::orderBy('created_at')->get()->toJson();
     }
 
@@ -39,14 +42,26 @@ class OrderController extends Controller
         $user = Auth::user();
         if (Auth::check() && $user->tokenCan('customer')) {
             
-            $address = [ $user->city, $user->zip, $user->address ];
-            $items = json_encode($request->items); // encode request items to a json string
-            $total = "calculate based on order";
+            $address = implode(' ', [ $user->zip, $user->city, $user->address ]);
+            $total = 0;
+            foreach ($request->items as $item) {
+                $dish = Dish::find($item['id']);
+                $name = $dish->name;
+                $price = $dish->price;
+                $total += $price * $item['quantity'];
+                $items[] = [
+                    'id' => $item['id'],
+                    'name' => $name,
+                    'quantity' => $item['quantity'],
+                    'price' => $price,
+                    'total_price' => $price * $item['quantity']
+                ];
+            }
             $order = Order::Create([
                 'user_id' => $user->id,     // aki kuldi a requestet
-                'order' => $items,// meg ossze kell rakni
+                'order' => json_encode($items),// hogy lesz ertelmesen dekodolva?
                 'total' => $total,          // ezen az oldalon szamolt ertek nem requestbol jon 
-                'status' => 'default pending?',
+                'status' => 'pending', // pending, confirmed, delivered, canceled
                 'payment_method' => $request->payment_method, // ez a requestbol jonne vagy a user objectbol?
                 'delivery_address' => $address,               // ezt a user objectbol szereljuk ossze
                 'delivery_note' => $request->delivery_note,   // ez a requestbol jon

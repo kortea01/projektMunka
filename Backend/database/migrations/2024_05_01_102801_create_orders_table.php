@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->json('order');
             $table->float('total');
-            $table->string('status');
+            $table->enum('status', ['pending', 'confirmed', 'delivered', 'canceled']);
             $table->string('payment_method');
             $table->string('delivery_address');
             $table->string('delivery_note')->nullable();
