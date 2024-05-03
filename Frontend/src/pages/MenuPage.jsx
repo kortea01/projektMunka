@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 function MenuPage() {
     const [dishes, setDishes] = useState([]);
+    const [links, setLinks] = useState([]);
 
     useEffect(() => {
-        menuQuery("all").then(data => setDishes(data));
+        menuQuery("all").then(data => {setDishes(data[0]);setLinks(data[1]);});
     }, []);
 
     async function menuQuery($category) {
@@ -24,7 +26,11 @@ function MenuPage() {
 
         const data = await response.json();
         if (response.ok) {
-            return data.data;
+            console.log(data.data);
+            console.log(data.links);
+            setDishes(data.data);
+            setLinks(data.links);
+            return [data.data, data.links];
         } else {
             alert(data.message);
         }
@@ -35,15 +41,15 @@ function MenuPage() {
         <div className='menuWrapper'>
             <div className='menuContainer'>
                 <div className='menuFilter'>
-                    <button onClick={() => menuQuery("all").then(data => setDishes(data))}>Összes</button>
-                    <button onClick={() => menuQuery("soup").then(data => setDishes(data))}>Levesek</button>
-                    <button onClick={() => menuQuery("salad").then(data => setDishes(data))}>Saláták</button>
-                    <button onClick={() => menuQuery("pizza").then(data => setDishes(data))}>Pizzák</button>
-                    <button onClick={() => menuQuery("pasta").then(data => setDishes(data))}>Tészták</button>     
-                    {/*<button onClick={() => menuQuery("risotto").then(data => setDishes(data))}>Rizottók</button>*/}
-                    <button onClick={() => menuQuery("dessert").then(data => setDishes(data))}>Desszertek</button>
-                    <button onClick={() => menuQuery("drinks").then(data => setDishes(data))}>Italok</button>
-                    <button onClick={() => menuQuery("other").then(data => setDishes(data))}>Egyebek</button>
+                    <button onClick={() => menuQuery("all").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Összes</button>
+                    <button onClick={() => menuQuery("soup").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Levesek</button>
+                    <button onClick={() => menuQuery("salad").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Saláták</button>
+                    <button onClick={() => menuQuery("pizza").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Pizzák</button>
+                    <button onClick={() => menuQuery("pasta").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Tészták</button>     
+                    {/*<button onClick={() => menuQuery("risotto").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Rizottók</button>*/}
+                    <button onClick={() => menuQuery("dessert").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Desszertek</button>
+                    <button onClick={() => menuQuery("drinks").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Italok</button>
+                    <button onClick={() => menuQuery("other").then(data => {setDishes(data[0]);setLinks(data[1]);})}>Egyebek</button>
 
                 </div>
                 <div className='menuItems'>
@@ -64,7 +70,15 @@ function MenuPage() {
                         </div>
                     ))}
                 </div>
-                <div className='menuPager'>1 2 utolso</div>
+                <div className='menuPager'>
+                    {links && links.map(link => (
+                        link.url && (
+                        <button key={link.url} className={(link.active && 'active')} onClick={() => menuQuery(link.url && link.url.split('/').pop()).then(data => {setDishes(data[0]);setLinks(data[1]);})}>
+                           {link.label}
+                        </button>
+                        )
+                    ))}
+                </div>
             </div>
         </div>
     );

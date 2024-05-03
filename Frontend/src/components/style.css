@@ -857,6 +857,11 @@ section
   	text-decoration: none;
 }
 
+.sidebar li a.delete {	
+	color: red;
+	font-size: 12pt;
+}
+
 /*.data {
 	background-color: #000000;
 	margin-left: 200px;

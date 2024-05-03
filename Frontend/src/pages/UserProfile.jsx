@@ -4,8 +4,6 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 
 
-
-
 function UserProfile(props) {
 
     const { user, logoutClick } = props;
@@ -86,9 +84,19 @@ function UserProfile(props) {
                 <ul className='sidebar_menu'>
                     <li><a href='/user-profile'>Profil</a></li>
                     <li><a href="#rendelesek">Rendelések</a></li>
+                    <br></br>
+                    <li><a className="delete" href="#torles" onClick={() => {
+                                if (window.confirm("Biztosan törölni szeretnéd a fiókodat?")) {
+                                    // delete request
+                                }
+                            }}>Fiók törlése</a></li>
                 </ul>
                 <div className='center'>
-                    <button type="button" onClick={() => logoutClick()}>Kijelentkezés</button>
+                    <button type="button" onClick={() => {
+                        if (window.confirm("Biztosan ki szeretnél jelentkezni?")) {
+                            logoutClick()
+                        }
+                    }}>Kijelentkezés</button>
                 </div>
                 </div>
             </nav>
