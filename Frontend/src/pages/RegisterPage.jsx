@@ -1,4 +1,9 @@
+import React from 'react';
 import { useRef } from "react";
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 function RegisterPage() {
     // displayed for registaion
@@ -11,6 +16,8 @@ function RegisterPage() {
     const zipRef = useRef(null);
     const cityRef = useRef(null);
     const addressRef = useRef(null); 
+
+    const navigate = useNavigate();
 
     const handleFormSubmit = event => {
         event.preventDefault()
@@ -45,6 +52,7 @@ function RegisterPage() {
         console.log(data);
         if (response.ok) {
             alert("Sikeres regisztráció!");
+            navigate('/login');
         } else {
             alert(data.message);
         }

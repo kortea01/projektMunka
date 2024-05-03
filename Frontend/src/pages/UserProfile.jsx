@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 function UserProfile(props) {
 
@@ -17,6 +17,8 @@ function UserProfile(props) {
     const zipRef = useRef(null);
     const cityRef = useRef(null);
     const addressRef = useRef(null); 
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (props.user) {
@@ -85,11 +87,31 @@ function UserProfile(props) {
                     <li><a href='/user-profile'>Profil</a></li>
                     <li><a href="#rendelesek">Rendelések</a></li>
                     <br></br>
-                    <li><a className="delete" href="#torles" onClick={() => {
+                    <li>
+                            <a className="delete" href="#torles" onClick={() => {
                                 if (window.confirm("Biztosan törölni szeretnéd a fiókodat?")) {
-                                    // delete request
+                                    const deleteUser = async () => {
+                                        const url = apiUrl + "/user/" + user.id;
+                                        const response = await fetch(url, {
+                                            method: "DELETE",
+                                            headers: {
+                                                "Accept": "application/json",
+                                                "Content-Type": "application/json",
+                                                "Authorization": "Bearer " + localStorage.getItem("token")
+                                            }
+                                        });
+                                        if (response.ok) {
+                                            alert("Felhasználó sikeresen törölve!");
+                                            navigate('/login');
+                                            // Perform any additional actions after successful deletion
+                                        } else {
+                                            alert("A kérés sikertelen volt. \r\n" + (await response.json()).message);
+                                        }
+                                    };
+                                    deleteUser();
                                 }
-                            }}>Fiók törlése</a></li>
+                            }}>Fiók törlése</a>
+                        </li>
                 </ul>
                 <div className='center'>
                     <button type="button" onClick={() => {
