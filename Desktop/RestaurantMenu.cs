@@ -37,7 +37,7 @@ namespace RestaurantDesktopApp
         public long[] Ingredients { get; set; }
 
         [JsonProperty("price")]
-        public long Price { get; set; }
+        public decimal Price { get; set; }
     }
 
     public partial class RestaurantMenu
